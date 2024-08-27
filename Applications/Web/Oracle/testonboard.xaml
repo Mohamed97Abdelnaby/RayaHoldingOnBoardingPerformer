@@ -1,0 +1,813 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="testonboard" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_DictOfInfo" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>944,5287</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="testonboard" sap:VirtualizedContainerService.HintSize="670,5222" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: Oracle Fusion Cloud Applications" sap:VirtualizedContainerService.HintSize="608,5111" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="Simulate" ScopeGuid="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V2" WindowResize="Minimize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="574,4894" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence sap2010:Annotation.AnnotationText="Hiring date: Today's date&#xA;Company: Holding&#xA;Hire method: Hire" DisplayName="Fill in When and why" sap:VirtualizedContainerService.HintSize="512,2597" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_4">
+                <ui:LogMessage.Message>
+                  <InArgument x:TypeArguments="x:Object">
+                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">"Navigating to hire employee"</CSharpValue>
+                  </InArgument>
+                </ui:LogMessage.Message>
+              </ui:LogMessage>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Home'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_7" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseOverview?_adf.ctrl-state=3375us256_110&amp;fndGlobalItemNodeId=ATK_HOMEPAGE_FUSE_WORKLIST&amp;_adf.no-new-window-redirect=true&amp;_afrLoop=17271984374621390&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="60478b25-472e-49dc-b913-69ba99b1af07" CvElementArea="1088, 89, 30, 29" CvType="Icon" DesignTimeRectangle="1094, 95, 19, 19" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'PATH'" FullSelectorArgument="&lt;webctrl class='xiz' tableRow='1' tag='TABLE' /&gt;&lt;webctrl class='svg-outline' tableCol='2' tableRow='1' tag='path' /&gt;" FuzzySelectorArgument="&lt;webctrl class='xiz' tag='TABLE' /&gt;&lt;webctrl class='svg-outline' type='' aaname='' tag='path' /&gt;" Guid="d4630d17-17ab-46db-8010-76d901b870ff" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEESURBVEhL7Yy7CsJAFETzPYJ1Kut0tpb+gb1V2nRW6W3tBDtRCIIIAUEFEUSEgCgSEG0EERyZsCuuu77AYJOBE8LemWPlch18guvOEky3Z7yVF4sDBEEMGf7zzdR95KW8VlsIpR7eTJt7jPJyeYjx+CA0QBjuUCqFCfyXGY32SdfkIIo8n++iXo/EFDifL/C8uTIgfONNhhtuH3s3eaUyQRQdRR1ot7dwnL42kPDGjgy3dNx3rEKhh2ZzLSpAHJ9QrU6V0ivY5UaGLjp5s3x/KZ6BRmMF2w40wTu44VaGTr7f5K3WRht9Cx1MJlfI5EYyuZH/yX8Bo8l/GUWeBomcn3To4ArrwFXilfSQnAAAAABJRU5ErkJggg==" InformativeScreenshot="7a5656775d9e94e90c413ab30930656b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='16h8hsd6jp' title='Worklist - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="60478b25-472e-49dc-b913-69ba99b1af07" CvElementArea="1131, 89, 30, 28" CvType="Icon" DesignTimeRectangle="1134, 96, 24, 14" ElementType="Text" FriendlyName="'Favorites and'" FullSelectorArgument="&lt;webctrl class='xiz' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Favorites and Recent Items' tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl class='xiz' tag='TABLE' /&gt;&lt;webctrl aaname='Favorites and Recent Items' type='' tag='A' class='svg-glob xko p_AFIconOnly' check:text='Favorites and Recent Items' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAASCAYAAABIB77kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAH4SURBVEhLlZXbSgJRFIZ7nkQoSQjCi667yCuTKOsh6ioyMIR8CCMvypcw7XBRTGNRmadAMu8KOngurRX/mmacbM2oCz7Y7PWv/0f37Jmx8fEEjcrl5Ssj9QYxcuD6eob0Wlu7FTV2jBTodqfo6an9G0e8drlSotaKkQL39socVK93qdns8joafRC1VgwdODd3Rt3uN4eEQnmKRIq8xh560ozEwMDZ2VNaWUlTOv3KAblclRyOBDmdh1Qq1XlPUV4oEFBZK3mYMQInJ5Pk9ysUDGYpFntkk1qtw4bmWlhQjOHV1fTvbq+q1Q7PxmJl2tzMsufERPJ/IBo4G6t6fv6g3d2yMaizv1/hnlXBE966/s9fikajoYV+fn7xWfl8ylBPIjTQbm/nqdPRzro/DPw7Q3Po/X2dpqeP/vTtmJk55hkUPPrDgPjQQNhq9UJhJOnMQFMqNXjGKgyIgWBpSTVCYeTxnIg6gN4wYcAyECwvq8YFz+drogagh0LY4uKFqNGxDQQ7OwU2u7p6E/sAPVQ4XBD7ZgYGxuMVNjs4qIh9MIxGZ2Dgzc07m+EST02laGsrR5lMlcEa1yEYzLHm+vpd9DBjG4jXV7v9xWb4/rVa2tpcOGNV1V570GJG8tKxDfR6z9nIXMVijTY27vgXY91f8/PnopdGgn4Alj7/uQtesXcAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'My Client Groups'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_8" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_afrLoop=17260360468327747&amp;_afrWindowMode=0&amp;_afrWindowId=11pmb93bz6&amp;_adf.ctrl-state=13yfgr7hao_2054&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="7dacc553-b869-45c3-a514-73b5d06aa2d5" CvTextArea="360, 289, 132, 20" CvTextArgument="My Client Groups" CvType="Text" DesignTimeRectangle="361, 286, 130, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'My Client Groups'" FullSelectorArgument="&lt;webctrl id='groupNode_workforce_management' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='groupNode_workforce_management' tag='A' type='' class='flat-tabs-text selected' aaname='My Client Groups' check:innerText='My Client Groups' /&gt;" Guid="a8700b3a-1eac-4f19-be37-24d83b55294d" InformativeScreenshot="ce8fde4d5c01576c5ad2acbdaad68eba.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='lluqqjk1a' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Hire an Employee'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_9" InteractionMode="Simulate" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17259729247552849&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=13yfgr7hao_880&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1267&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="63547c85-2686-41f7-bc4e-7b2fe6ec86cc" CvTextArea="332, 383, 106, 16" CvTextArgument="Hire an Employee" CvType="Text" DesignTimeRectangle="328, 420, 108, 17" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Hire an Employee'" FullSelectorArgument="&lt;webctrl tag='A' type='quickaction' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='A' type='quickaction' class='app-nav-label flat-grid-nav-label flat-quickactions-item-link' aaname='Hire an Employee' check:innerText='Hire an Employee' /&gt;" Guid="79bc1dac-b720-458f-9840-b78c84df6378" ImageBase64="" InformativeScreenshot="b8ea2e7c7f43451b7e6176ff32bd88aa.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='18t74kyt4u' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_5">
+                <ui:LogMessage.Message>
+                  <InArgument x:TypeArguments="x:Object">
+                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">"Navigating to hire employee success"</CSharpValue>
+                  </InArgument>
+                </ui:LogMessage.Message>
+              </ui:LogMessage>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lh4t53uz8_205&amp;_afrLoop=17247222619529237&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="cd9d58d6-e969-417f-b222-5ab8cef83582" CvElementArea="1043, 102, 124, 37" CvTextArea="1076, 113, 59, 15" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="1046, 105, 118, 32" DesignTimeScaleFactor="1" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl class='xiz' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='xiz' tag='TABLE' /&gt;&lt;webctrl type='' tag='DIV' class='callToActionSubmit xeq p_AFTextOnly' aaname='' /&gt;" Guid="5c351dfe-64aa-4f08-96ab-af9dedb15b55" InformativeScreenshot="7934513eb536104309d0d32ac5173983.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='ulcyydylm' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <ui:LogMessage DisplayName="&quot;Entering general static data&quot;" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_7">
+                <ui:LogMessage.Message>
+                  <InArgument x:TypeArguments="x:Object">
+                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">"Entering general static data"</CSharpValue>
+                  </InArgument>
+                </ui:LogMessage.Message>
+              </ui:LogMessage>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'When is'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_21" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lh4t53uz8_205&amp;_afrLoop=17247429878987377&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="d9b0aada-6a1f-4933-a90b-db0b15e09b4e" CvTextArea="476, 395, 85, 16" CvTextArgument="19/Aug/2024" CvType="Text" DesignTimeRectangle="472, 387, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'19/Aug/2024'" FullSelectorArgument="&lt;webctrl aria-label='dd/mmm/yyyy' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='dd/mmm/yyyy' tag='INPUT' type='' class='x2b' aaname='When is the employee hire date?' /&gt;" Guid="2db43d30-057a-4540-b183-c0d64caa785a" InformativeScreenshot="778ab0f440bc72829203f4e2766d5fd1.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='ulcyydylm' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="d9b0aada-6a1f-4933-a90b-db0b15e09b4e" CvTextArea="475, 365, 212, 13" CvTextArgument="'When is the employee hire date?" CvType="Text" DesignTimeRectangle="479, 362, 208, 19" ElementType="Text" FriendlyName="'When is'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='x34t' aaname='When is the employee hire date?' check:innerText='When is the employee hire date?' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <uix:NTypeInto.Text>
+                  <InArgument x:TypeArguments="x:String">
+                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">DateTime.Today.ToString("dd/MMM/yyyy")</CSharpValue>
+                  </InArgument>
+                </uix:NTypeInto.Text>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NTypeInto>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Legal Employer'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_22" InteractionMode="DebuggerApi" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Raya Holding[k(Enter)]" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17262785636313625&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=13yfgr7hao_5470&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1251&amp;_afrMFH=606&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="7403a8ef-6fd7-466b-86ac-fbee3c73f67b" CvElementArea="462, 336, 414, 32" CvType="InputBox" DesignTimeRectangle="465, 339, 385, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Raya Holding'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' /&gt;" FuzzyAccuracy="0.9" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' class='x1s6' aaname='Legal Employer' /&gt;" Guid="04d12446-ea0b-45e4-8246-6b95d17e160b" InformativeScreenshot="923172c4b8239aa85339a9c481f2153c.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='l7lzykisb' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="7403a8ef-6fd7-466b-86ac-fbee3c73f67b" CvTextArea="467, 315, 102, 17" CvTextArgument="'Legal Employer" CvType="Text" DesignTimeRectangle="471, 313, 97, 19" ElementType="Text" FriendlyName="'Legal Employer'" FullSelectorArgument="&lt;webctrl class='af_panelLabelAndMessage_label-text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl class='af_panelLabelAndMessage_label-text' tag='LABEL' type='' aaname='Legal Employer' check:innerText='Legal Employer' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NTypeInto>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NSelectItem DisplayName="Select Item 'Legal Employer'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_8" Item="Raya HoldingEG" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                      <uix:NSelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="3">
+                          <x:String>NameLegislation Code</x:String>
+                          <x:String>Recent Legal Employers</x:String>
+                          <x:String>Raya HoldingEG</x:String>
+                        </scg:List>
+                      </uix:NSelectItem.Items>
+                      <uix:NSelectItem.Target>
+                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="0cccacce-e8ee-4488-b17b-92a1823d1832" CvTextArea="477, 391, 86, 16" CvTextArgument="Raya Holding" CvType="Text" DesignTimeRectangle="472, 384, 411, 28" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Raya HoldingLegal'" FullSelectorArgument="&lt;webctrl aria-role='combobox' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='combobox' tag='SPAN' type='' class='x1s5' aaname='' /&gt;" Guid="517ee946-ee7e-4bb8-ae77-e0899cb1972d" ImageBase64="" InformativeScreenshot="7c45a5951aad2f559d6fdb5428909733.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CVScreenId="0cccacce-e8ee-4488-b17b-92a1823d1832" CvTextArea="472, 361, 105, 17" CvTextArgument="*Legal Employer" CvType="Text" DesignTimeRectangle="479, 359, 97, 19" ElementType="Text" FriendlyName="'Legal Employer'" FullSelectorArgument="&lt;webctrl class='af_panelLabelAndMessage_label-text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl class='af_panelLabelAndMessage_label-text' tag='LABEL' type='' aaname='Legal Employer' check:innerText='Legal Employer' /&gt;" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NSelectItem.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NSelectItem>
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'What's the'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_23" InteractionMode="DebuggerApi" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Hire" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17262785636313625&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=13yfgr7hao_5470&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1251&amp;_afrMFH=606&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="2756a7d6-49e6-4a8f-9a3d-1f04f59284d2" CvElementArea="463, 404, 413, 32" CvType="InputBox" DesignTimeRectangle="465, 407, 385, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Hire'" FullSelectorArgument="&lt;webctrl aria-label='What&amp;apos;s the way to hire an employee?' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='What&amp;apos;s the way to hire an employee?' tag='INPUT' type='text' class='x1s6' aaname='What&amp;apos;s the way to hire an employee?' /&gt;" Guid="f56f3514-859c-4141-ba4a-10d7f53ff44c" InformativeScreenshot="3f7ebd13f2f53e8da65121d016871d77.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='l7lzykisb' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="2756a7d6-49e6-4a8f-9a3d-1f04f59284d2" CvTextArea="465, 383, 239, 17" CvTextArgument="*What's the way to hire an employee?" CvType="Text" DesignTimeRectangle="471, 381, 233, 19" ElementType="Text" FriendlyName="'What's the'" FullSelectorArgument="&lt;webctrl aaname='What&amp;apos;s the way to hire an employee?' class='af_panelLabelAndMessage_label-text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='What&amp;apos;s the way to hire an employee?' class='af_panelLabelAndMessage_label-text' tag='LABEL' type='' check:innerText='What&amp;apos;s the way to hire an employee?' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NSelectItem DisplayName="Select Item 'What's the'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_9" Item="Hire" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                      <uix:NSelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="2">
+                          <x:String>Action</x:String>
+                          <x:String>Hire</x:String>
+                        </scg:List>
+                      </uix:NSelectItem.Items>
+                      <uix:NSelectItem.Target>
+                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17247808247617390&amp;_afrWindowMode=0&amp;_afrWindowId=ulcyydylm&amp;_adf.ctrl-state=lmm96prlj_1&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="986e8a0a-2e43-430e-b6e0-21da4508fa3a" CvTextArea="477, 530, 27, 13" CvTextArgument="Hire" CvType="Text" DesignTimeRectangle="472, 523, 411, 28" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'HireWhat's the'" FullSelectorArgument="&lt;webctrl aria-label='What&amp;apos;s the way to hire an employee?' aria-role='combobox' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='What&amp;apos;s the way to hire an employee?' aria-role='combobox' tag='SPAN' type='' class='x1s5' aaname='' /&gt;" Guid="e7b20336-9c79-40c4-9bcf-36d6f6a0c0ef" InformativeScreenshot="d44df36f8902fa85d17eced14bd22b88.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CVScreenId="986e8a0a-2e43-430e-b6e0-21da4508fa3a" CvTextArea="476, 501, 237, 16" CvTextArgument="What's the way to hire an employee?" CvType="Text" DesignTimeRectangle="479, 498, 233, 19" ElementType="Text" FriendlyName="'What's the'" FullSelectorArgument="&lt;webctrl aaname='What&amp;apos;s the way to hire an employee?' class='af_panelLabelAndMessage_label-text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='What&amp;apos;s the way to hire an employee?' class='af_panelLabelAndMessage_label-text' tag='LABEL' type='' check:innerText='What&amp;apos;s the way to hire an employee?' /&gt;" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NSelectItem.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NSelectItem>
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="6aae54b3-4a77-44a5-a39b-fe5ddf7ddc38" CvElementArea="534, 470, 304, 42" CvTextArea="657, 484, 61, 14" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="537, 471, 300, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='' class='x3bd x7j p_AFTextOnly' aaname='Continue' check:innerText='Continue' /&gt;" Guid="60942022-c411-4ea0-9ffe-db5c8a7cc26d" InformativeScreenshot="31721e85209d399053365d14e7e5271d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+              <ui:LogMessage DisplayName="&quot;Entering general static data success" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_8">
+                <ui:LogMessage.Message>
+                  <InArgument x:TypeArguments="x:Object">
+                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">"Entering general static data success"</CSharpValue>
+                  </InArgument>
+                </ui:LogMessage.Message>
+              </ui:LogMessage>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="First name&#xA;Second name&#xA;" DisplayName="Fill in personal details" sap:VirtualizedContainerService.HintSize="512,1887" sap2010:WorkflowViewState.IdRef="Sequence_20">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="Sequence set global data" sap:VirtualizedContainerService.HintSize="450,1473" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:LogMessage DisplayName="&quot;Entering global data&quot;" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_9">
+                  <ui:LogMessage.Message>
+                    <InArgument x:TypeArguments="x:Object">
+                      <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">"Entering global data"</CSharpValue>
+                    </InArgument>
+                  </ui:LogMessage.Message>
+                </ui:LogMessage>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Global Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_24" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Mohamed" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?fnd=%3B%3B%3B%3Bfalse%3B256%3B%3B%3B&amp;_afrLoop=17261254583244345&amp;_afrWindowMode=0&amp;_afrWindowId=zuyiuf9z7&amp;_adf.ctrl-state=13yfgr7hao_3180&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="44ddd04c-2c87-4a3c-8990-9afea52684ac" CvElementArea="470, 287, 413, 32" CvType="InputBox" DesignTimeRectangle="472, 485, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl name='pt1:atkfr1:0:rQuick:1:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl name='pt1:atkfr1:0:rQuick:1:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' class='x25' aaname='First Name' /&gt;" Guid="931df6c2-2896-4373-a41f-54733256bddb" InformativeScreenshot="bde41060b8bf18f3615bd215026288c0.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='dax19yynh' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CVScreenId="a975a1b5-ac94-4a44-b059-06f41959d578" CvTextArea="292, 289, 90, 15" CvTextArgument="Global Name" CvType="Text" DesignTimeRectangle="301, 361, 88, 21" ElementType="Text" FriendlyName="'Global Name'" FullSelectorArgument="&lt;webctrl class='af_panelHeader_title-table2' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='H2' /&gt;" FuzzySelectorArgument="&lt;webctrl class='af_panelHeader_title-table2' tag='TABLE' /&gt;&lt;webctrl type='' tag='H2' class='x1cv ' aaname='Global Name' check:innerText='Global Name' /&gt;" SearchSteps="FuzzySelector, CV" />
+                          <uix:Target CVScreenId="0d558f06-1446-4c6b-8a38-d9c843e912ca" CvTextArea="313, 172, 171, 22" CvTextArgument="Personal Details" CvType="Text" DesignTimeRectangle="321, 235, 788, 47" ElementType="Text" FriendlyName="'Personal Details'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;h1&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table' idx='3' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='x1ns' aaname='Personal Details' check:innerText='Personal Details' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Seconds Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_25" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Abdelnaby" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="95a09965-74e5-4f13-a761-210243772d4d" CvElementArea="470, 430, 413, 31" CvType="InputBox" DesignTimeRectangle="472, 432, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Seconds Name' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Seconds Name' name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' class='x25' /&gt;" Guid="70838ca9-0151-4ddb-b73e-5a6c5e513378" InformativeScreenshot="2e54b99a63b442c1378aa38f914e04c0.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="95a09965-74e5-4f13-a761-210243772d4d" CvTextArea="476, 410, 98, 13" CvTextArgument="Seconds Name" CvType="Text" DesignTimeRectangle="479, 407, 94, 19" ElementType="Text" FriendlyName="'Seconds Name'" FullSelectorArgument="&lt;webctrl aaname='Seconds Name' class='af_inputText_label-text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Seconds Name' class='af_inputText_label-text' tag='LABEL' type='' check:innerText='Seconds Name' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Third Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_26" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Saleh" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="00be4a0e-d796-4e93-a7f0-81e740644136" CvElementArea="470, 394, 413, 31" CvType="InputBox" DesignTimeRectangle="472, 396, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Third Name' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Third Name' name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' class='x25' /&gt;" Guid="060afa40-ce83-433a-8d50-0393851badc7" InformativeScreenshot="f6cfb60e3d584e4c4999ae971d7b2530.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="00be4a0e-d796-4e93-a7f0-81e740644136" CvTextArea="471, 373, 83, 14" CvTextArgument="*Third Name" CvType="Text" DesignTimeRectangle="479, 371, 75, 19" ElementType="Text" FriendlyName="'Third Name'" FullSelectorArgument="&lt;webctrl aaname='Third Name' class='af_inputText_label-text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Third Name' class='af_inputText_label-text' tag='LABEL' type='' check:innerText='Third Name' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Last Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_27" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Gaber" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="ebce5179-03b0-466c-bfdc-7f2add2a3ca7" CvElementArea="470, 462, 413, 31" CvType="InputBox" DesignTimeRectangle="472, 464, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Last Name' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Last Name' name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' class='x25' /&gt;" Guid="dcae6d7b-f58b-4999-a80a-9deb87562549" InformativeScreenshot="64afaa522b6ac1de8d0b92c1554687e2.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="ebce5179-03b0-466c-bfdc-7f2add2a3ca7" CvTextArea="477, 442, 69, 13" CvTextArgument="Last Name" CvType="Text" DesignTimeRectangle="479, 439, 67, 19" ElementType="Text" FriendlyName="'Last Name'" FullSelectorArgument="&lt;webctrl aaname='Last Name' class='af_inputText_label-text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Last Name' class='af_inputText_label-text' tag='LABEL' type='' check:innerText='Last Name' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <ui:LogMessage DisplayName="&quot;Entering global data success&quot;" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_10">
+                  <ui:LogMessage.Message>
+                    <InArgument x:TypeArguments="x:Object">
+                      <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">"Entering global data success"</CSharpValue>
+                    </InArgument>
+                  </ui:LogMessage.Message>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:LogMessage>
+              </Sequence>
+              <Sequence DisplayName="Sequence set local data" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NSelectItem DisplayName="Select Item 'Local-Name Language'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_10" Item="Arabic" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                  <uix:NSelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="37">
+                      <x:String>Select a value</x:String>
+                      <x:String>Arabic</x:String>
+                      <x:String>Brazilian Portuguese</x:String>
+                      <x:String>Canadian French</x:String>
+                      <x:String>Croatian</x:String>
+                      <x:String>Czech</x:String>
+                      <x:String>Danish</x:String>
+                      <x:String>Dutch</x:String>
+                      <x:String>Estonian</x:String>
+                      <x:String>Finnish</x:String>
+                      <x:String>French</x:String>
+                      <x:String>German</x:String>
+                      <x:String>Greek</x:String>
+                      <x:String>Hebrew</x:String>
+                      <x:String>Hungarian</x:String>
+                      <x:String>Icelandic</x:String>
+                      <x:String>Italian</x:String>
+                      <x:String>Japanese</x:String>
+                      <x:String>Korean</x:String>
+                      <x:String>Latin American Spanish</x:String>
+                      <x:String>Latvian</x:String>
+                      <x:String>Lithuanian</x:String>
+                      <x:String>Norwegian</x:String>
+                      <x:String>Polish</x:String>
+                      <x:String>Portuguese</x:String>
+                      <x:String>Romanian</x:String>
+                      <x:String>Russian</x:String>
+                      <x:String>Simplified Chinese</x:String>
+                      <x:String>Slovak</x:String>
+                      <x:String>Slovenian</x:String>
+                      <x:String>Spanish</x:String>
+                      <x:String>Swedish</x:String>
+                      <x:String>Thai</x:String>
+                      <x:String>Traditional Chinese</x:String>
+                      <x:String>Turkish</x:String>
+                      <x:String>Ukrainian</x:String>
+                      <x:String>Vietnamese</x:String>
+                    </scg:List>
+                  </uix:NSelectItem.Items>
+                  <uix:NSelectItem.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17259044909778434&amp;_afrWindowMode=0&amp;_afrWindowId=kdee4ipe7&amp;_adf.ctrl-state=13yfgr7hao_1&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="8b508d17-dd67-44ba-9475-49af9eb4681f" CvElementArea="470, 432, 412, 31" CvType="InputBox" DesignTimeRectangle="472, 434, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Select a value'" FullSelectorArgument="&lt;webctrl aaname='Local-Name Language' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzyAccuracy="0.9" FuzzySelectorArgument="&lt;webctrl aaname='Local-Name Language' aria-role='combobox' tag='INPUT' type='text' class='x2h' /&gt;" Guid="341d0daa-9085-41f3-b70b-d234f1f4527f" ImageBase64="" InformativeScreenshot="d0ce9c62b5d47ca4bb59e65144ff652f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='y99n2gryc' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="8b508d17-dd67-44ba-9475-49af9eb4681f" CvTextArea="472, 411, 149, 17" CvTextArgument="*Local-Name Language" CvType="Text" DesignTimeRectangle="479, 409, 142, 19" ElementType="Text" FriendlyName="'Local-Name Language'" FullSelectorArgument="&lt;webctrl aaname='Local-Name Language' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Local-Name Language' tag='LABEL' type='' class='x34u' check:innerText='Local-Name Language' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSelectItem.Target>
+                </uix:NSelectItem>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'First Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_28" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="محمد" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="a9e5d6e1-bfee-47d0-b816-8617bb3882a7" CvElementArea="470, 357, 413, 32" CvType="InputBox" DesignTimeRectangle="472, 479, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='First Name' idx='2' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='First Name' class='x25' name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' /&gt;" Guid="d7c6fbc0-b3a6-4a4e-a011-db0052d5c8fc" InformativeScreenshot="64d2e18daa567ad0d885b8c0c2fbace2.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="a9e5d6e1-bfee-47d0-b816-8617bb3882a7" CvTextArea="477, 337, 71, 13" CvTextArgument="First Name" CvType="Text" DesignTimeRectangle="479, 454, 69, 19" ElementType="Text" FriendlyName="'First Name'" FullSelectorArgument="&lt;webctrl aaname='First Name' class='af_inputText_label-text' idx='2' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='First Name' class='af_inputText_label-text' type='' tag='LABEL' check:innerText='First Name' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Seconds Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_29" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="صالج" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="ee44fecf-c078-4acb-9e78-5c15bf54069e" CvElementArea="470, 545, 414, 32" CvType="InputBox" DesignTimeRectangle="472, 547, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Seconds Name' idx='2' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Seconds Name' class='x25' name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' /&gt;" Guid="269cf4f1-78d0-4d71-a5b1-424686a7372a" InformativeScreenshot="9f652e18dfe6f49dba0b0f995089a3af.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="ee44fecf-c078-4acb-9e78-5c15bf54069e" CvTextArea="476, 525, 98, 13" CvTextArgument="Seconds Name" CvType="Text" DesignTimeRectangle="479, 522, 94, 19" ElementType="Text" FriendlyName="'Seconds Name'" FullSelectorArgument="&lt;webctrl aaname='Seconds Name' class='af_inputText_label-text' idx='2' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Seconds Name' class='af_inputText_label-text' type='' tag='LABEL' check:innerText='Seconds Name' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Third Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_30" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="جابر" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="ee44fecf-c078-4acb-9e78-5c15bf54069e" CvElementArea="470, 613, 413, 32" CvType="InputBox" DesignTimeRectangle="472, 615, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Third Name' idx='2' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Third Name' class='x25' name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' /&gt;" Guid="2987560a-0674-452a-ab97-5ca47145a3ef" InformativeScreenshot="3c2ac475d7d28befe7cf21f92fffaceb.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="ee44fecf-c078-4acb-9e78-5c15bf54069e" CvTextArea="475, 592, 79, 14" CvTextArgument="Third Name" CvType="Text" DesignTimeRectangle="479, 590, 75, 19" ElementType="Text" FriendlyName="'Third Name'" FullSelectorArgument="&lt;webctrl aaname='Third Name' class='af_inputText_label-text' idx='2' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Third Name' class='af_inputText_label-text' type='' tag='LABEL' check:innerText='Third Name' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Last Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_31" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="محمد" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="ee44fecf-c078-4acb-9e78-5c15bf54069e" CvElementArea="469, 682, 414, 31" CvType="InputBox" DesignTimeRectangle="472, 683, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Last Name' idx='2' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Last Name' class='x25' name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:pn*' tag='INPUT' type='text' /&gt;" Guid="fc756bba-67bd-4d86-8f91-2bf9ca2792a9" InformativeScreenshot="2d17e54e9aafe710c3ba037076c4c243.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="ee44fecf-c078-4acb-9e78-5c15bf54069e" CvTextArea="471, 660, 75, 14" CvTextArgument="*Last Name" CvType="Text" DesignTimeRectangle="479, 658, 67, 19" ElementType="Text" FriendlyName="'Last Name'" FullSelectorArgument="&lt;webctrl aaname='Last Name' class='af_inputText_label-text' idx='2' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Last Name' class='af_inputText_label-text' type='' tag='LABEL' check:innerText='Last Name' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NSelectItem DisplayName="Select Item 'Gender'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_11" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                        <uix:NSelectItem.Item>
+                          <InArgument x:TypeArguments="x:String">
+                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9" xml:space="preserve">((in_Config["EnglishIDNumber"].ToString()[2] - '0') % 2 == 0) ?  "Female" : "Male"</CSharpValue>
+                          </InArgument>
+                        </uix:NSelectItem.Item>
+                        <uix:NSelectItem.Items>
+                          <scg:List x:TypeArguments="x:String" Capacity="3">
+                            <x:String>Select a value</x:String>
+                            <x:String>Female</x:String>
+                            <x:String>Male</x:String>
+                          </scg:List>
+                        </uix:NSelectItem.Items>
+                        <uix:NSelectItem.Target>
+                          <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="226a30b0-e481-4904-98ce-46b53632b263" CvElementArea="472, 393, 411, 30" CvType="InputBox" DesignTimeRectangle="472, 394, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Select a value'" FullSelectorArgument="&lt;webctrl aaname='Gender' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Gender' aria-role='combobox' tag='INPUT' type='text' class='x2h' /&gt;" Guid="53875264-908a-4a75-a239-a9a6ad2020b5" ImageBase64="" InformativeScreenshot="0a64ec12b022a5d3fc3fb7cd137622d7.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target CVScreenId="226a30b0-e481-4904-98ce-46b53632b263" CvTextArea="477, 372, 49, 13" CvTextArgument="Gender" CvType="Text" DesignTimeRectangle="479, 369, 46, 19" ElementType="Text" FriendlyName="'Gender'" FullSelectorArgument="&lt;webctrl aaname='Gender' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Gender' tag='LABEL' type='' class='x34u' check:innerText='Gender' /&gt;" SearchSteps="FuzzySelector, CV" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NSelectItem.Target>
+                      </uix:NSelectItem>
+                    </Sequence>
+                  </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:CommentOut>
+                <uix:NSelectItem DisplayName="Select Item 'Gender'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_12" Item="Male" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                  <uix:NSelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="3">
+                      <x:String>Select a value</x:String>
+                      <x:String>Female</x:String>
+                      <x:String>Male</x:String>
+                    </scg:List>
+                  </uix:NSelectItem.Items>
+                  <uix:NSelectItem.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="226a30b0-e481-4904-98ce-46b53632b263" CvElementArea="472, 393, 411, 30" CvType="InputBox" DesignTimeRectangle="472, 394, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Select a value'" FullSelectorArgument="&lt;webctrl aaname='Gender' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Gender' aria-role='combobox' tag='INPUT' type='text' class='x2h' /&gt;" Guid="53875264-908a-4a75-a239-a9a6ad2020b5" ImageBase64="" InformativeScreenshot="0a64ec12b022a5d3fc3fb7cd137622d7.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="226a30b0-e481-4904-98ce-46b53632b263" CvTextArea="477, 372, 49, 13" CvTextArgument="Gender" CvType="Text" DesignTimeRectangle="479, 369, 46, 19" ElementType="Text" FriendlyName="'Gender'" FullSelectorArgument="&lt;webctrl aaname='Gender' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Gender' tag='LABEL' type='' class='x34u' check:innerText='Gender' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSelectItem.Target>
+                </uix:NSelectItem>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Date of Birth'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_32" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="13/8/1997" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="df76533b-dca1-4f70-9992-06ac1754df0b" CvTextArea="476, 470, 96, 16" CvTextArgument="dd/mmm/yyyy" CvType="Text" DesignTimeRectangle="472, 462, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aria-label='dd/mmm/yyyy' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='dd/mmm/yyyy' tag='INPUT' type='' class='x2b' aaname='Date of Birth' /&gt;" Guid="05c9eb53-35ab-4a79-8f7b-009094c0b8c1" InformativeScreenshot="87e654fd6dd9e3fac4d77e049405ec38.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="df76533b-dca1-4f70-9992-06ac1754df0b" CvTextArea="478, 440, 82, 13" CvTextArgument="Date of Birth" CvType="Text" DesignTimeRectangle="479, 437, 81, 19" ElementType="Text" FriendlyName="'Date of Birth'" FullSelectorArgument="&lt;webctrl aaname='Date of Birth' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Date of Birth' tag='LABEL' type='' class='x34t' check:innerText='Date of Birth' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NSelectItem DisplayName="Select Item 'National ID Type'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_13" Item="National Identifier" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                  <uix:NSelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="2">
+                      <x:String>Select a value</x:String>
+                      <x:String>National Identifier</x:String>
+                    </scg:List>
+                  </uix:NSelectItem.Items>
+                  <uix:NSelectItem.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="e9e1a38c-382d-4c8e-a836-bc96cddd1c61" CvElementArea="470, 346, 413, 31" CvType="InputBox" DesignTimeRectangle="472, 347, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Select a value'" FullSelectorArgument="&lt;webctrl aaname='National ID Type' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='National ID Type' aria-role='combobox' tag='INPUT' type='text' class='x2h' /&gt;" Guid="9b3c2278-f03e-4a5a-aa96-d3b975f333af" ImageBase64="" InformativeScreenshot="2f7164730155bf7a0bb387bc14e0b56f.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="e9e1a38c-382d-4c8e-a836-bc96cddd1c61" CvTextArea="475, 325, 110, 16" CvTextArgument="'National ID Type" CvType="Text" DesignTimeRectangle="479, 322, 106, 19" ElementType="Text" FriendlyName="'National ID Type'" FullSelectorArgument="&lt;webctrl aaname='National ID Type' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='National ID Type' tag='LABEL' type='' class='x34u' check:innerText='National ID Type' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NSelectItem.Target>
+                </uix:NSelectItem>
+              </Sequence>
+              <Sequence DisplayName="Sequence National ID details" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'National ID'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,219" sap2010:WorkflowViewState.IdRef="NTypeInto_33" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="29905150100123" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_adf.ctrl-state=lmm96prlj_1&amp;_afrLoop=17248436425468408&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="ce5a8ac7-e9d0-434f-9225-373edc1fe5a9" CvElementArea="349, 372, 356, 31" CvType="InputBox" DesignTimeRectangle="351, 373, 353, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:ni*' tableRow='1' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl name='pt1:atkfr1:0:rQuick:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr1:1:r1:0:ni*' class='x25' tag='INPUT' type='text' aaname='National ID' /&gt;" Guid="578ba375-bffb-42b6-af10-f3b2d5fa50b0" InformativeScreenshot="984dda71ce2f5a732e71eef824baa040.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='kdee4ipe7' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="ce5a8ac7-e9d0-434f-9225-373edc1fe5a9" CvTextArea="354, 350, 77, 14" CvTextArgument="National ID" CvType="Text" DesignTimeRectangle="358, 348, 72, 19" ElementType="Text" FriendlyName="'National ID'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tag='TABLE' /&gt;&lt;webctrl class='af_inputText_label-text' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='af_inputText_label-text' type='' tag='LABEL' aaname='National ID' check:innerText='National ID' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Issue Date'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,219" sap2010:WorkflowViewState.IdRef="NTypeInto_34" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="08/12/2024" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17259044909778434&amp;_afrWindowMode=0&amp;_afrWindowId=kdee4ipe7&amp;_adf.ctrl-state=13yfgr7hao_1&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="f6ac6114-1764-4551-9090-d583351dbaf4" CvTextArea="355, 269, 97, 16" CvTextArgument="dd/mmm/yyyy" CvType="Text" DesignTimeRectangle="351, 261, 353, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aria-label='dd/mmm/yyyy' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aria-label='dd/mmm/yyyy' type='' tag='INPUT' class='x2b' aaname='Issue Date' /&gt;" Guid="a1e50e05-835e-4a8a-b97c-15d93faac1c1" InformativeScreenshot="1a65fdc218e9c1b3ac399478607f4b39.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='y99n2gryc' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="f6ac6114-1764-4551-9090-d583351dbaf4" CvTextArea="350, 238, 74, 14" CvTextArgument="*Issue Date" CvType="Text" DesignTimeRectangle="358, 236, 65, 19" ElementType="Text" FriendlyName="'Issue Date'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tag='TABLE' /&gt;&lt;webctrl aaname='Issue Date' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Issue Date' type='' tag='LABEL' class='x34t' check:innerText='Issue Date' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Expiration Date'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,219" sap2010:WorkflowViewState.IdRef="NTypeInto_35" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="08/12/2024" Version="V3">
+                  <uix:NTypeInto.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17259044909778434&amp;_afrWindowMode=0&amp;_afrWindowId=kdee4ipe7&amp;_adf.ctrl-state=13yfgr7hao_1&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="f6ac6114-1764-4551-9090-d583351dbaf4" CvTextArea="355, 337, 97, 16" CvTextArgument="dd/mmm/yyyy" CvType="Text" DesignTimeRectangle="351, 329, 353, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Expiration Date' aria-label='dd/mmm/yyyy' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Expiration Date' aria-label='dd/mmm/yyyy' type='' tag='INPUT' class='x2b' /&gt;" Guid="2aeefed6-5f8d-4bbc-b11c-ec02ca665dc8" InformativeScreenshot="dd2f4c9b2dc2216ae92a4b577dd9486a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='y99n2gryc' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CVScreenId="f6ac6114-1764-4551-9090-d583351dbaf4" CvTextArea="356, 307, 100, 16" CvTextArgument="Expiration Date" CvType="Text" DesignTimeRectangle="358, 304, 98, 19" ElementType="Text" FriendlyName="'Expiration Date'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;span&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' tag='TABLE' /&gt;&lt;webctrl aaname='Expiration Date' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Expiration Date' type='' tag='LABEL' class='x34t' check:innerText='Expiration Date' /&gt;" SearchSteps="FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NTypeInto.Target>
+                </uix:NTypeInto>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="388,158" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17259044909778434&amp;_afrWindowMode=0&amp;_afrWindowId=kdee4ipe7&amp;_adf.ctrl-state=13yfgr7hao_1&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1271&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="c35c3234-ec22-4c56-a758-6b40cec35de3" CvElementArea="535, 317, 302, 42" CvTextArea="657, 331, 61, 13" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="537, 318, 300, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='' class='button-emphasis x3bd x7j p_AFTextOnly' aaname='Continue' check:innerText='Continue' /&gt;" Guid="c498aeb1-d4b5-459c-9f37-00d122a86c8c" InformativeScreenshot="9e7b0bcfdbc67bf3867c9a01003083a6.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='y99n2gryc' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                  </uix:NClick.Target>
+                </uix:NClick>
+              </Sequence>
+            </Sequence>
+            <Sequence sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Fill in Address" sap:VirtualizedContainerService.HintSize="512,123" sap2010:WorkflowViewState.IdRef="Sequence_22">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NSelectItem DisplayName="Select Item 'Country'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_14" Item="Egypt" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                      <uix:NSelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="50">
+                          <x:String>KYCayman Islands</x:String>
+                          <x:String>CFCentral African Republic</x:String>
+                          <x:String>TDChad</x:String>
+                          <x:String>CLChile</x:String>
+                          <x:String>CNChina</x:String>
+                          <x:String>CXChristmas Island</x:String>
+                          <x:String>CCCocos (Keeling) Islands</x:String>
+                          <x:String>COColombia</x:String>
+                          <x:String>KMComoros</x:String>
+                          <x:String>CGCongo-Brazzaville</x:String>
+                          <x:String>CKCook Islands</x:String>
+                          <x:String>CRCosta Rica</x:String>
+                          <x:String>CICote d'Ivoire</x:String>
+                          <x:String>HRCroatia</x:String>
+                          <x:String>CUCuba</x:String>
+                          <x:String>CWCuracao</x:String>
+                          <x:String>CYCyprus</x:String>
+                          <x:String>CZCzech Republic</x:String>
+                          <x:String>CDDR Congo-Kinshasa</x:String>
+                          <x:String>DKDenmark</x:String>
+                          <x:String>DJDjibouti</x:String>
+                          <x:String>DMDominica</x:String>
+                          <x:String>DODominican Republic</x:String>
+                          <x:String>ECEcuador</x:String>
+                          <x:String>EGEgypt</x:String>
+                          <x:String>SVEl Salvador</x:String>
+                          <x:String>GQEquatorial Guinea</x:String>
+                          <x:String>EREritrea</x:String>
+                          <x:String>EEEstonia</x:String>
+                          <x:String>SZEswatini</x:String>
+                          <x:String>ETEthiopia</x:String>
+                          <x:String>FKFalkland Islands (Malvinas)</x:String>
+                          <x:String>FOFaroe Islands</x:String>
+                          <x:String>FJFiji</x:String>
+                          <x:String>FIFinland</x:String>
+                          <x:String>FRFrance</x:String>
+                          <x:String>GFFrench Guiana</x:String>
+                          <x:String>PFFrench Polynesia</x:String>
+                          <x:String>TFFrench Southern Territories</x:String>
+                          <x:String>GAGabon</x:String>
+                          <x:String>GMGambia</x:String>
+                          <x:String>GEGeorgia</x:String>
+                          <x:String>DEGermany</x:String>
+                          <x:String>GHGhana</x:String>
+                          <x:String>GIGibraltar</x:String>
+                          <x:String>GRGreece</x:String>
+                          <x:String>GLGreenland</x:String>
+                          <x:String>GDGrenada</x:String>
+                          <x:String>GPGuadeloupe</x:String>
+                          <x:String>GUGuam</x:String>
+                        </scg:List>
+                      </uix:NSelectItem.Items>
+                      <uix:NSelectItem.Target>
+                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17262316648910843&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=13yfgr7hao_5154&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1267&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="262b2063-4f11-4fd0-b76d-292a9e9b1e60" CvTextArea="476, 269, 88, 13" CvTextArgument="Select a value" CvType="Text" DesignTimeRectangle="472, 262, 411, 28" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Country'" FullSelectorArgument="&lt;webctrl aria-role='combobox' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='combobox' tag='SPAN' type='' class='x1s5' aaname='' /&gt;" Guid="4251b0ce-7007-4cc4-af50-eda83238cdb9" ImageBase64="" InformativeScreenshot="c47a638c744a9226493c6246809bec33.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='cohympuad' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target CVScreenId="262b2063-4f11-4fd0-b76d-292a9e9b1e60" CvTextArea="470, 240, 54, 16" CvTextArgument="Country" CvType="Text" DesignTimeRectangle="472, 237, 51, 19" ElementType="Text" FriendlyName="'Country'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='af_panelLabelAndMessage_label-text' aaname='Country' check:innerText='Country' /&gt;" SearchSteps="FuzzySelector, CV" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NSelectItem.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NSelectItem>
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
+              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Country'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_36" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Egypt" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17263158585624781&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=13yfgr7hao_5900&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1251&amp;_afrMFH=606&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="38b48c73-e915-4fbd-b1f5-aa9f56a827b9" CvElementArea="461, 487, 415, 30" CvType="InputBox" DesignTimeRectangle="465, 489, 385, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' class='x1s6' aaname='Country' /&gt;" Guid="cb70e19e-585d-4cc4-b1d4-c42a215125ba" InformativeScreenshot="7f90879fcbb5a917fc9825479193d429.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='h3vs0c200' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                        <uix:Target CVScreenId="38b48c73-e915-4fbd-b1f5-aa9f56a827b9" CvTextArea="462, 466, 54, 16" CvTextArgument="Country" CvType="Text" DesignTimeRectangle="464, 463, 51, 19" ElementType="Text" FriendlyName="'Country'" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='af_panelLabelAndMessage_label-text' aaname='Country' check:innerText='Country' /&gt;" SearchSteps="FuzzySelector, CV" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NTypeInto.Target>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17262316648910843&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=13yfgr7hao_5154&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1267&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="b851fe83-6ca8-472d-a604-d9353c1d4afd" CvElementArea="535, 310, 303, 42" CvTextArea="657, 324, 61, 13" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="537, 311, 300, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='' class='button-emphasis x3bd x7j p_AFTextOnly' aaname='Continue' check:innerText='Continue' /&gt;" Guid="c1d48a16-d8eb-483f-82c3-2f7a45569e0f" InformativeScreenshot="0004a8926a878f57fbb0053529fd9481.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='cohympuad' title='Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NClick>
+            </Sequence>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,52" sap2010:WorkflowViewState.IdRef="LogMessage_6">
+              <ui:LogMessage.Message>
+                <InArgument x:TypeArguments="x:Object">
+                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">"hamada"</CSharpValue>
+                </InArgument>
+              </ui:LogMessage.Message>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-6, 0, 1366, 664" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFFSURBVDhPnZJZTsNAEESt7OtHjpQD5CNHyklyFrawYwirQBAQAiEQCAQiIJamnu2xHFtAYKQnW9Nd1TM97e0VCjYNuxE7YjvCYxG0ZvPPbIUGnaxBq2XWbmdhP5G3mc+nDEjo9+3HRVx5H42G+RkD3w+TRiOzXi8L+yzlvcpgY8Kg242D6aPCJ1/2XRHlr00YUCEKpMUc911QNS6k/NXfDKiK+E281Ov2LJIGK86At40D0RWSVccSPiFOXWHJGTAYQVUXnKKJ5+WyLToDJiowoMKUz3hSKtkglwsNhjJI3jUw+maQTiU8FofFos07A0YyedeHWs3uqlW7EVeVil3ouGeCqkcSHgj6NucMGEk6/CjhvbiV8FrCS8Fdk1X3JaRnQ2lmnQEjyVStC4aD51kWdJlGDcSCkjkyVQHxjAgMosXPP/A6X4CZKcozoWSPAAAAAElFTkSuQmCC" InformativeScreenshot="75cb85c736a23ee58c79b20608361464.jpg" Selector="&lt;html app='msedge.exe' htmlwindowname='bp967db3z' title='Oracle Fusion Cloud Applications' /&gt;" Title="Oracle Fusion Cloud Applications" Url="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/fscmUI/faces/FuseOverview" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
