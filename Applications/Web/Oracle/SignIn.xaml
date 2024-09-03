@@ -11,7 +11,7 @@
     <InArgument x:TypeArguments="ui:UiElement" />
   </this:SignIn.out_HomePage>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>944,1930</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>918,1930</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -141,7 +141,7 @@
       <ui:RetryScope DisplayName="Retry Scope sign in " sap:VirtualizedContainerService.HintSize="588,1551" sap2010:WorkflowViewState.IdRef="RetryScope_3">
         <ui:RetryScope.ActivityBody>
           <ActivityAction>
-            <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Edge: Sign In" sap:VirtualizedContainerService.HintSize="546,1376" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="e915686c-7c6e-4a67-8163-914ba202806a" Version="V2">
+            <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Edge: Sign In" sap:VirtualizedContainerService.HintSize="546,1376" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" ScopeGuid="e915686c-7c6e-4a67-8163-914ba202806a" Version="V2" WindowResize="Maximize">
               <uix:NApplicationCard.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
