@@ -1,9 +1,9 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.ReadConfigFromAssets="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:r="clr-namespace:RayaOnBoardingPerformer;assembly=DataService.RayaOnBoardingPerformer" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uda="clr-namespace:UiPath.DataService.Activities;assembly=UiPath.DataService.Activities.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" this:Main.ReadConfigFromAssets="True" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:r="clr-namespace:RayaOnBoardingPerformer;assembly=DataService.RayaOnBoardingPerformer" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="ReadConfigFromAssets" Type="InArgument(x:Boolean)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>918,2083</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>918,2143</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -45,93 +45,113 @@
       <x:String>UiPath.DataService.Activities.Models</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>RayaOnBoardingPerformer</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Utils</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
     <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>DataService.RayaOnBoardingPerformer</AssemblyReference>
       <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>RayaOnBoardingPerformer.Core</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
-      <AssemblyReference>System.Linq</AssemblyReference>
-      <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
       <AssemblyReference>System.Data</AssemblyReference>
       <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
+      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Net.Requests</AssemblyReference>
+      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
+      <AssemblyReference>System.Net.WebClient</AssemblyReference>
+      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
+      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>System.Activities</AssemblyReference>
-      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
-      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
-      <AssemblyReference>System.Data</AssemblyReference>
-      <AssemblyReference>System.Drawing</AssemblyReference>
       <AssemblyReference>System.Xml</AssemblyReference>
       <AssemblyReference>System.Xml.Linq</AssemblyReference>
-      <AssemblyReference>PresentationFramework</AssemblyReference>
-      <AssemblyReference>WindowsBase</AssemblyReference>
-      <AssemblyReference>PresentationCore</AssemblyReference>
-      <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
-      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
-      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
-      <AssemblyReference>System.Security.Permissions</AssemblyReference>
-      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
-      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
-      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
-      <AssemblyReference>System.ObjectModel</AssemblyReference>
-      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>UiPath.Workflow</AssemblyReference>
-      <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Memory.Data</AssemblyReference>
-      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
-      <AssemblyReference>System.Console</AssemblyReference>
-      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
-      <AssemblyReference>System.ComponentModel</AssemblyReference>
-      <AssemblyReference>System.Memory</AssemblyReference>
-      <AssemblyReference>System.Private.Uri</AssemblyReference>
-      <AssemblyReference>System.Net.Primitives</AssemblyReference>
-      <AssemblyReference>System.Net.HttpListener</AssemblyReference>
-      <AssemblyReference>System.Net.WebProxy</AssemblyReference>
-      <AssemblyReference>System.Net.NameResolution</AssemblyReference>
-      <AssemblyReference>System.Net.WebClient</AssemblyReference>
-      <AssemblyReference>System.Net.Requests</AssemblyReference>
-      <AssemblyReference>System.Net.ServicePoint</AssemblyReference>
-      <AssemblyReference>System.Net.WebHeaderCollection</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>System.Collections</AssemblyReference>
-      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Mail</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
-      <AssemblyReference>netstandard</AssemblyReference>
       <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
       <AssemblyReference>UiPath.DataService.Definition</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
-      <AssemblyReference>DataService.RayaOnBoardingPerformer</AssemblyReference>
-      <AssemblyReference>RayaOnBoardingPerformer.Core</AssemblyReference>
-      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
-      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
-      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
-      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>RayaOnBoardingPerformerMailVersion.Core</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>RayaOnBoardingPerformerMailVersion.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Process Name: &#xA;- Process Trigger: By Queue&#xA;- Queue Items:&#xA;-------------------------------------------------------------------&#xA;- Read Config File and other Configuratitons [Assets]&#xA;- Kind of exceptions to be &#xA;occured: SE&#xA;-------------------------------------------------------------------&#xA;- Get New Transaction From target orchestrator Queue. - Kind of exceptions to be occured: SE&#xA;Then validate its specific contents&#xA;- Kind of exceptions to be occured: BE&#xA;-------------------------------------------------------------------&#xA;Perform core processing&#xA;-------------------------------&#xA;- &#xA;-&#xA;-&#xA;-&#xA;-------------------------------------------------------------------&#xA;Set Transaction to Success" DisplayName="Main-Entry" sap:VirtualizedContainerService.HintSize="884,2018" sap2010:WorkflowViewState.IdRef="Sequence_16">
+  <Sequence sap2010:Annotation.AnnotationText="- Process Name: &#xA;- Process Trigger: By Queue&#xA;- Queue Items:&#xA;-------------------------------------------------------------------&#xA;- Read Config File and other Configuratitons [Assets]&#xA;- Kind of exceptions to be &#xA;occured: SE&#xA;-------------------------------------------------------------------&#xA;- Get New Transaction From target orchestrator Queue. - Kind of exceptions to be occured: SE&#xA;Then validate its specific contents&#xA;- Kind of exceptions to be occured: BE&#xA;-------------------------------------------------------------------&#xA;Perform core processing&#xA;-------------------------------&#xA;- &#xA;-&#xA;-&#xA;-&#xA;-------------------------------------------------------------------&#xA;Set Transaction to Success" DisplayName="Main-Entry" sap:VirtualizedContainerService.HintSize="884,2078" sap2010:WorkflowViewState.IdRef="Sequence_16">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch- Main" sap:VirtualizedContainerService.HintSize="822,1595" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch- Main" sap:VirtualizedContainerService.HintSize="822,1655" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="Config">
           <Variable.Default>
@@ -143,9 +163,11 @@
         <Variable x:TypeArguments="r:OtherOnboardData" Name="OtherOnboardDataObject" />
         <Variable x:TypeArguments="r:WorkStub" Name="WorkStubObject" />
         <Variable x:TypeArguments="r:CriminalRecord" Name="CriminalRecordObject" />
+        <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="DicOfNewHireData" />
+        <Variable x:TypeArguments="snm:MailMessage" Name="MailMessage" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <Flowchart sap2010:Annotation.AnnotationText=" - Initialization`s&#xA; - Get Transaction &amp; Validate&#xA; - Core&#xA; - Update Transaction" DisplayName="Perform All Actions" sap:VirtualizedContainerService.HintSize="784,1345" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+        <Flowchart sap2010:Annotation.AnnotationText=" - Initialization`s&#xA; - Get Transaction &amp; Validate&#xA; - Core&#xA; - Update Transaction" DisplayName="Perform All Actions" sap:VirtualizedContainerService.HintSize="784,1405" sap2010:WorkflowViewState.IdRef="Flowchart_1">
           <Flowchart.Variables>
             <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="AD retrived info&#xA;------------------&#xA;DisplayName&#xA;Mobile&#xA;Mail&#xA;&#xA;---------&#xA;Oracle&#xA;NewPassword" Name="DicOfInfo" />
             <Variable x:TypeArguments="r:ApprovalReqeust" Name="ApprovalRequestObject" />
@@ -158,7 +180,7 @@
               <av:Size x:Key="ShapeSize">60,75</av:Size>
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 120,107.5 120,128.5</av:PointCollection>
-              <x:Double x:Key="Height">1236</x:Double>
+              <x:Double x:Key="Height">1296</x:Double>
               <x:Double x:Key="Width">750</x:Double>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -170,7 +192,7 @@
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">20,128.5</av:Point>
                 <av:Size x:Key="ShapeSize">200,153</av:Size>
-                <av:PointCollection x:Key="ConnectorLocation">220,205 250,205 250,210 470,210</av:PointCollection>
+                <av:PointCollection x:Key="ConnectorLocation">220,205 250,205 250,240 450,240</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Sequence sap2010:Annotation.AnnotationText="- Read Config File and other Configuratitons [Assets]&#xA;- Kind of exceptions to be &#xA;occured: SE" DisplayName="Initialization`s" sap:VirtualizedContainerService.HintSize="200,153" sap2010:WorkflowViewState.IdRef="Sequence_17">
@@ -246,113 +268,100 @@
               </ui:LogMessage>
             </Sequence>
             <FlowStep.Next>
-              <FlowStep x:Name="__ReferenceID0">
+              <FlowStep x:Name="__ReferenceID4">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <av:Point x:Key="ShapeLocation">470,96</av:Point>
-                    <av:Size x:Key="ShapeSize">200,228</av:Size>
-                    <av:PointCollection x:Key="ConnectorLocation">570,324 570,354 520,354 520,403.5</av:PointCollection>
+                    <av:Point x:Key="ShapeLocation">450,141</av:Point>
+                    <av:Size x:Key="ShapeSize">200,198</av:Size>
+                    <av:PointCollection x:Key="ConnectorLocation">550,339 550,369 520,369 520,403.5</av:PointCollection>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence sap2010:Annotation.AnnotationText="- Get New Transaction From target orchestrator Queue. - Kind of exceptions to be occured: SE&#xA;Then validate its specific contents&#xA;- Kind of exceptions to be occured: BE&#xA;" DisplayName="Get Transaction &amp; Validate" sap:VirtualizedContainerService.HintSize="200,228" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                <Sequence sap2010:Annotation.AnnotationText="Hint: &#xA;- in case of integration service the iteration act as sequence (one-shot) and this case when UseIntegrationServiceAsTrigger set to true" DisplayName="Read, Validate and Extract" sap:VirtualizedContainerService.HintSize="200,198" sap2010:WorkflowViewState.IdRef="Sequence_80">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="s:Exception" Name="SE" />
+                    <Variable x:TypeArguments="ui:BusinessRuleException" Name="BE" />
+                    <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="DicOfRequestInfo" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Sequence DisplayName="Get Transaction" sap:VirtualizedContainerService.HintSize="450,586" sap2010:WorkflowViewState.IdRef="Sequence_22">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:LogMessage DisplayName="&quot;Invoke get transaction process, Started&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
-                      <ui:LogMessage.Message>
-                        <InArgument x:TypeArguments="x:Object">
-                          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">"Invoke get transaction process, Started"</CSharpValue>
-                        </InArgument>
-                      </ui:LogMessage.Message>
-                    </ui:LogMessage>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetTransaction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Orchestrator\\GetTransaction.xaml">
-                      <ui:InvokeWorkflowFile.Arguments>
-                        <OutArgument x:TypeArguments="ui:QueueItem" x:Key="out_QueueItem">
-                          <CSharpReference x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">QueueItem</CSharpReference>
-                        </OutArgument>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                          <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">Config</CSharpValue>
-                        </InArgument>
-                      </ui:InvokeWorkflowFile.Arguments>
-                    </ui:InvokeWorkflowFile>
-                    <ui:LogMessage DisplayName="&quot;Invoke get transaction process, Terminated&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
-                      <ui:LogMessage.Message>
-                        <InArgument x:TypeArguments="x:Object">
-                          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">"Invoke get transaction process, Terminated"</CSharpValue>
-                        </InArgument>
-                      </ui:LogMessage.Message>
-                    </ui:LogMessage>
-                  </Sequence>
-                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-                    <ui:CommentOut.Body>
-                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,192" sap2010:WorkflowViewState.IdRef="Sequence_67">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="Validation" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:LogMessage DisplayName="&quot;Invoke Q-Validation process, started&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info">
-                            <ui:LogMessage.Message>
-                              <InArgument x:TypeArguments="x:Object">
-                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">"Invoke Q-Validation process, started"</CSharpValue>
-                              </InArgument>
-                            </ui:LogMessage.Message>
-                          </ui:LogMessage>
-                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Processes\\Queue\\Validation.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Processes\\Queue\\Validation.xaml">
-                            <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">Config</CSharpValue>
-                              </InArgument>
-                              <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_QueueItem">
-                                <CSharpValue x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">QueueItem</CSharpValue>
-                              </InArgument>
-                            </ui:InvokeWorkflowFile.Arguments>
-                          </ui:InvokeWorkflowFile>
-                          <ui:LogMessage DisplayName="&quot;Invoke Q-Validation process, terminated&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info">
-                            <ui:LogMessage.Message>
-                              <InArgument x:TypeArguments="x:Object">
-                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">"Invoke Q-Validation process, terminated"</CSharpValue>
-                              </InArgument>
-                            </ui:LogMessage.Message>
-                          </ui:LogMessage>
-                        </Sequence>
-                      </Sequence>
-                    </ui:CommentOut.Body>
+                  <ui:LogMessage DisplayName="&quot;Invoke mail manipulation WF, Started&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_25">
+                    <ui:LogMessage.Message>
+                      <InArgument x:TypeArguments="x:Object">
+                        <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_207">"Invoke mail manipulation WF, Started"</CSharpValue>
+                      </InArgument>
+                    </ui:LogMessage.Message>
+                  </ui:LogMessage>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="MailManipulations.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="Mail\\MailManipulations.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                        <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_208">Config</CSharpValue>
+                      </InArgument>
+                      <OutArgument x:TypeArguments="s:Exception" x:Key="out_SE">
+                        <CSharpReference x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpReference`1_62">SE</CSharpReference>
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="ui:BusinessRuleException" x:Key="out_BE">
+                        <CSharpReference x:TypeArguments="ui:BusinessRuleException" sap2010:WorkflowViewState.IdRef="CSharpReference`1_63">BE</CSharpReference>
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_DicOfRequestInfo">
+                        <CSharpReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_64">DicOfRequestInfo</CSharpReference>
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="snm:MailMessage" x:Key="out_MailMessage">
+                        <CSharpReference x:TypeArguments="snm:MailMessage" sap2010:WorkflowViewState.IdRef="CSharpReference`1_66">MailMessage</CSharpReference>
+                      </OutArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                  <If DisplayName="If - SE | BE" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="If_6">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_209">SE!=null || BE!=null</CSharpValue>
+                      </InArgument>
+                    </If.Condition>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                  </ui:CommentOut>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,178" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Throw DisplayName="Throw  SE|BE" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_1">
+                          <InArgument x:TypeArguments="s:Exception">
+                            <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_210">SE!=null ? SE:BE</CSharpValue>
+                          </InArgument>
+                        </Throw>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_82" />
+                    </If.Else>
+                  </If>
+                  <ui:LogMessage DisplayName="&quot;Invoke mail manipulation WF, Terminated successfully&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_26">
+                    <ui:LogMessage.Message>
+                      <InArgument x:TypeArguments="x:Object">
+                        <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_211">"Invoke mail manipulation WF, Terminated successfully"</CSharpValue>
+                      </InArgument>
+                    </ui:LogMessage.Message>
+                  </ui:LogMessage>
                 </Sequence>
                 <FlowStep.Next>
-                  <FlowStep x:Name="__ReferenceID1">
+                  <FlowStep x:Name="__ReferenceID0">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:Point x:Key="ShapeLocation">420,403.5</av:Point>
-                        <av:Size x:Key="ShapeSize">200,273</av:Size>
-                        <av:PointCollection x:Key="ConnectorLocation">520,676.5 520,740 490,740</av:PointCollection>
+                        <av:Size x:Key="ShapeSize">200,288</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">520,691.5 520,740 490,740</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence sap2010:Annotation.AnnotationText="Get data service objects&#xA;-------------------------------&#xA;- &#xA;-&#xA;-&#xA;&#xA;- Kind of exceptions to be &#xA;occured: SE&#xA;&#xA;Outputs:&#xA;-&#xA;-" DisplayName="Get Data Services objects" sap:VirtualizedContainerService.HintSize="200,273" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                    <Sequence sap2010:Annotation.AnnotationText="Get Data Tables from attachment&#xA;-------------------------------&#xA;- &#xA;-&#xA;-&#xA;&#xA;- Kind of exceptions to be &#xA;occured: SE&#xA;&#xA;Outputs:&#xA;-&#xA;-" DisplayName="Get Data Tables from attachment" sap:VirtualizedContainerService.HintSize="200,288" sap2010:WorkflowViewState.IdRef="Sequence_24">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:Int64" Name="EgyptianIDCount" />
                         <Variable x:TypeArguments="scg:IList(r:EgyptianNationalIDs)" Name="EgyptianIDObjects" />
@@ -363,333 +372,185 @@
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:LogMessage DisplayName="&quot;Getting data service objects&quot;" sap:VirtualizedContainerService.HintSize="2590,141" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info">
+                      <ui:LogMessage DisplayName="&quot;Getting data service objects&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info">
                         <ui:LogMessage.Message>
                           <InArgument x:TypeArguments="x:Object">
-                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_152">"Getting data service objects"</CSharpValue>
+                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_212">"Getting data datables from attachment"</CSharpValue>
                           </InArgument>
                         </ui:LogMessage.Message>
                       </ui:LogMessage>
-                      <Parallel DisplayName="Parallel Get onboarding data objects" sap:VirtualizedContainerService.HintSize="2590,420" sap2010:WorkflowViewState.IdRef="Parallel_1">
+                      <Assign DisplayName="Assign DictOfNewHireData" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="Assign_10">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
+                            <CSharpReference x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_72">DicOfNewHireData</CSharpReference>
+                          </OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
+                            <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_226">new Dictionary&lt;String, string&gt;()</CSharpValue>
+                          </InArgument>
+                        </Assign.Value>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="Get EgyptianIDObject" sap:VirtualizedContainerService.HintSize="450,373" sap2010:WorkflowViewState.IdRef="Sequence_62">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <uda:QueryEntityRecords x:TypeArguments="r:EgyptianNationalIDs" ContinueOnError="False" DisplayName="Query Entity Records EgyptianNationalIDs" EntityId="29ec86d5-2357-ef11-991a-000d3ab703d4" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_1" QueriedEntityId="29ec86d5-2357-ef11-991a-000d3ab703d4" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
-                            <uda:QueryEntityRecords.FilterArguments>
-                              <uda:FilterArgument FilterActivityType="{x:Null}">
-                                <uda:FilterArgument.Filter>
-                                  <uda:GroupFilter Index="0" Operator="AND">
-                                    <uda:GroupFilter.Filters>
-                                      <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
-                                        <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Reference" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
-                                      </scg:List>
-                                    </uda:GroupFilter.Filters>
-                                    <uda:GroupFilter.Groups>
-                                      <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
-                                    </uda:GroupFilter.Groups>
-                                  </uda:GroupFilter>
-                                </uda:FilterArgument.Filter>
-                              </uda:FilterArgument>
-                            </uda:QueryEntityRecords.FilterArguments>
-                            <uda:QueryEntityRecords.FilterValues>
-                              <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                <InArgument x:TypeArguments="x:String">
-                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_154">QueueItem.Reference</CSharpValue>
-                                </InArgument>
-                              </scg:List>
-                            </uda:QueryEntityRecords.FilterValues>
-                            <uda:QueryEntityRecords.OutputRecords>
-                              <OutArgument x:TypeArguments="scg:IList(r:EgyptianNationalIDs)">
-                                <CSharpReference x:TypeArguments="scg:IList(r:EgyptianNationalIDs)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">EgyptianIDObjects</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.OutputRecords>
-                            <uda:QueryEntityRecords.TotalRecords>
-                              <OutArgument x:TypeArguments="x:Int64">
-                                <CSharpReference x:TypeArguments="x:Int64" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">EgyptianIDCount</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.TotalRecords>
-                          </uda:QueryEntityRecords>
-                          <Assign DisplayName="Assign EgyptianIDObject" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="r:EgyptianNationalIDs">
-                                <CSharpReference x:TypeArguments="r:EgyptianNationalIDs" sap2010:WorkflowViewState.IdRef="CSharpReference`1_49">EgyptianIDObject</CSharpReference>
-                              </OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="r:EgyptianNationalIDs">
-                                <CSharpValue x:TypeArguments="r:EgyptianNationalIDs" sap2010:WorkflowViewState.IdRef="CSharpValue`1_155">EgyptianIDObjects[0]</CSharpValue>
-                              </InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                        <Sequence DisplayName="Get WorkStub Object" sap:VirtualizedContainerService.HintSize="450,373" sap2010:WorkflowViewState.IdRef="Sequence_63">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="scg:IList(r:WorkStub)" Name="WorkStubObjects" />
-                            <Variable x:TypeArguments="x:Int64" Name="WorkStubCount" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <uda:QueryEntityRecords x:TypeArguments="r:WorkStub" ContinueOnError="False" DisplayName="Query Entity Records WorkStubObject" EntityId="726cd5cc-fd5a-ef11-991a-000d3ab703d4" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_2" QueriedEntityId="726cd5cc-fd5a-ef11-991a-000d3ab703d4" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
-                            <uda:QueryEntityRecords.FilterArguments>
-                              <uda:FilterArgument FilterActivityType="{x:Null}">
-                                <uda:FilterArgument.Filter>
-                                  <uda:GroupFilter Index="0" Operator="AND">
-                                    <uda:GroupFilter.Filters>
-                                      <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
-                                        <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Reference" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
-                                      </scg:List>
-                                    </uda:GroupFilter.Filters>
-                                    <uda:GroupFilter.Groups>
-                                      <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
-                                    </uda:GroupFilter.Groups>
-                                  </uda:GroupFilter>
-                                </uda:FilterArgument.Filter>
-                              </uda:FilterArgument>
-                            </uda:QueryEntityRecords.FilterArguments>
-                            <uda:QueryEntityRecords.FilterValues>
-                              <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                <InArgument x:TypeArguments="x:String">
-                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_156">QueueItem.Reference</CSharpValue>
-                                </InArgument>
-                              </scg:List>
-                            </uda:QueryEntityRecords.FilterValues>
-                            <uda:QueryEntityRecords.OutputRecords>
-                              <OutArgument x:TypeArguments="scg:IList(r:WorkStub)">
-                                <CSharpReference x:TypeArguments="scg:IList(r:WorkStub)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">WorkStubObjects</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.OutputRecords>
-                            <uda:QueryEntityRecords.TotalRecords>
-                              <OutArgument x:TypeArguments="x:Int64">
-                                <CSharpReference x:TypeArguments="x:Int64" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">WorkStubCount</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.TotalRecords>
-                          </uda:QueryEntityRecords>
-                          <Assign DisplayName="Assign WorkStubObject" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="r:WorkStub">
-                                <CSharpReference x:TypeArguments="r:WorkStub" sap2010:WorkflowViewState.IdRef="CSharpReference`1_52">WorkStubObject</CSharpReference>
-                              </OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="r:WorkStub">
-                                <CSharpValue x:TypeArguments="r:WorkStub" sap2010:WorkflowViewState.IdRef="CSharpValue`1_187">WorkStubObjects[0]</CSharpValue>
-                              </InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                        <Sequence DisplayName="Get OtherDataObject" sap:VirtualizedContainerService.HintSize="450,373" sap2010:WorkflowViewState.IdRef="Sequence_64">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="scg:IList(r:WorkStub)" Name="WorkStubObjects" />
-                            <Variable x:TypeArguments="x:Int64" Name="WorkStubCount" />
-                            <Variable x:TypeArguments="scg:IList(r:OtherOnboardData)" Name="OtherOnboardDataObjects" />
-                            <Variable x:TypeArguments="x:Int64" Name="OtherOnboardDataCount" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <uda:QueryEntityRecords x:TypeArguments="r:OtherOnboardData" ContinueOnError="False" DisplayName="Query Entity Records OtherOnboardData" EntityId="3e801d76-f45a-ef11-991a-000d3ab703d4" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_3" QueriedEntityId="3e801d76-f45a-ef11-991a-000d3ab703d4" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
-                            <uda:QueryEntityRecords.FilterArguments>
-                              <uda:FilterArgument FilterActivityType="{x:Null}">
-                                <uda:FilterArgument.Filter>
-                                  <uda:GroupFilter Index="0" Operator="AND">
-                                    <uda:GroupFilter.Filters>
-                                      <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
-                                        <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Reference" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
-                                      </scg:List>
-                                    </uda:GroupFilter.Filters>
-                                    <uda:GroupFilter.Groups>
-                                      <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
-                                    </uda:GroupFilter.Groups>
-                                  </uda:GroupFilter>
-                                </uda:FilterArgument.Filter>
-                              </uda:FilterArgument>
-                            </uda:QueryEntityRecords.FilterArguments>
-                            <uda:QueryEntityRecords.FilterValues>
-                              <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                <InArgument x:TypeArguments="x:String">
-                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_159">QueueItem.Reference</CSharpValue>
-                                </InArgument>
-                              </scg:List>
-                            </uda:QueryEntityRecords.FilterValues>
-                            <uda:QueryEntityRecords.OutputRecords>
-                              <OutArgument x:TypeArguments="scg:IList(r:OtherOnboardData)">
-                                <CSharpReference x:TypeArguments="scg:IList(r:OtherOnboardData)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_31">OtherOnboardDataObjects</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.OutputRecords>
-                            <uda:QueryEntityRecords.TotalRecords>
-                              <OutArgument x:TypeArguments="x:Int64">
-                                <CSharpReference x:TypeArguments="x:Int64" sap2010:WorkflowViewState.IdRef="CSharpReference`1_30">OtherOnboardDataCount</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.TotalRecords>
-                          </uda:QueryEntityRecords>
-                          <Assign DisplayName="Assign OtherDataObject" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_6">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="r:OtherOnboardData">
-                                <CSharpReference x:TypeArguments="r:OtherOnboardData" sap2010:WorkflowViewState.IdRef="CSharpReference`1_51">OtherOnboardDataObject</CSharpReference>
-                              </OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="r:OtherOnboardData">
-                                <CSharpValue x:TypeArguments="r:OtherOnboardData" sap2010:WorkflowViewState.IdRef="CSharpValue`1_161">OtherOnboardDataObjects[0]</CSharpValue>
-                              </InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                        <Sequence DisplayName="Get criminalrecord" sap:VirtualizedContainerService.HintSize="450,373" sap2010:WorkflowViewState.IdRef="Sequence_65">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="scg:IList(r:WorkStub)" Name="WorkStubObjects" />
-                            <Variable x:TypeArguments="x:Int64" Name="WorkStubCount" />
-                            <Variable x:TypeArguments="scg:IList(r:OtherOnboardData)" Name="OtherOnboardDataObjects" />
-                            <Variable x:TypeArguments="x:Int64" Name="OtherOnboardDataCount" />
-                            <Variable x:TypeArguments="x:Int64" Name="CriminalRecordsObjectsCount" />
-                            <Variable x:TypeArguments="scg:IList(r:CriminalRecord)" Name="CriminalRecordsObjects" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <uda:QueryEntityRecords x:TypeArguments="r:CriminalRecord" ContinueOnError="False" DisplayName="Query Entity Records CriminalRecord" EntityId="6a1c53d1-2857-ef11-991a-000d3ab703d4" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_4" QueriedEntityId="6a1c53d1-2857-ef11-991a-000d3ab703d4" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
-                            <uda:QueryEntityRecords.FilterArguments>
-                              <uda:FilterArgument FilterActivityType="{x:Null}">
-                                <uda:FilterArgument.Filter>
-                                  <uda:GroupFilter Index="0" Operator="AND">
-                                    <uda:GroupFilter.Filters>
-                                      <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
-                                        <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Reference" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
-                                      </scg:List>
-                                    </uda:GroupFilter.Filters>
-                                    <uda:GroupFilter.Groups>
-                                      <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
-                                    </uda:GroupFilter.Groups>
-                                  </uda:GroupFilter>
-                                </uda:FilterArgument.Filter>
-                              </uda:FilterArgument>
-                            </uda:QueryEntityRecords.FilterArguments>
-                            <uda:QueryEntityRecords.FilterValues>
-                              <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                <InArgument x:TypeArguments="x:String">
-                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_162">QueueItem.Reference</CSharpValue>
-                                </InArgument>
-                              </scg:List>
-                            </uda:QueryEntityRecords.FilterValues>
-                            <uda:QueryEntityRecords.OutputRecords>
-                              <OutArgument x:TypeArguments="scg:IList(r:CriminalRecord)">
-                                <CSharpReference x:TypeArguments="scg:IList(r:CriminalRecord)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">CriminalRecordsObjects</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.OutputRecords>
-                            <uda:QueryEntityRecords.TotalRecords>
-                              <OutArgument x:TypeArguments="x:Int64">
-                                <CSharpReference x:TypeArguments="x:Int64" sap2010:WorkflowViewState.IdRef="CSharpReference`1_34">CriminalRecordsObjectsCount</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.TotalRecords>
-                          </uda:QueryEntityRecords>
-                          <Assign DisplayName="Assign OtherDataObject" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_7">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="r:CriminalRecord">
-                                <CSharpReference x:TypeArguments="r:CriminalRecord" sap2010:WorkflowViewState.IdRef="CSharpReference`1_53">CriminalRecordObject</CSharpReference>
-                              </OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="r:CriminalRecord">
-                                <CSharpValue x:TypeArguments="r:CriminalRecord" sap2010:WorkflowViewState.IdRef="CSharpValue`1_163">CriminalRecordsObjects[0]</CSharpValue>
-                              </InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                        <Sequence DisplayName="Get approval request" sap:VirtualizedContainerService.HintSize="496,373" sap2010:WorkflowViewState.IdRef="Sequence_78">
-                          <Sequence.Variables>
-                            <Variable x:TypeArguments="scg:IList(r:WorkStub)" Name="WorkStubObjects" />
-                            <Variable x:TypeArguments="x:Int64" Name="WorkStubCount" />
-                            <Variable x:TypeArguments="scg:IList(r:OtherOnboardData)" Name="OtherOnboardDataObjects" />
-                            <Variable x:TypeArguments="x:Int64" Name="OtherOnboardDataCount" />
-                            <Variable x:TypeArguments="x:Int64" Name="CriminalRecordsObjectsCount" />
-                            <Variable x:TypeArguments="scg:IList(r:CriminalRecord)" Name="CriminalRecordsObjects" />
-                            <Variable x:TypeArguments="scg:IList(r:ApprovalReqeust)" Name="ApprovalRequestObjects" />
-                          </Sequence.Variables>
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <uda:QueryEntityRecords x:TypeArguments="r:ApprovalReqeust" ContinueOnError="False" DisplayName="Query Entity Records" EntityId="a1cf83c0-db63-ef11-991a-000d3ab703d4" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="434,140" sap2010:WorkflowViewState.IdRef="QueryEntityRecords`1_5" QueriedEntityId="a1cf83c0-db63-ef11-991a-000d3ab703d4" Skip="0" SortAscending="True" SortByField="Id" TimeoutInMs="30000" Top="100">
-                            <uda:QueryEntityRecords.FilterArguments>
-                              <uda:FilterArgument FilterActivityType="{x:Null}">
-                                <uda:FilterArgument.Filter>
-                                  <uda:GroupFilter Index="0" Operator="AND">
-                                    <uda:GroupFilter.Filters>
-                                      <scg:List x:TypeArguments="uda:SimpleFilter" Capacity="4">
-                                        <uda:SimpleFilter ExpressionValue="{x:Null}" FieldName="Reference" FieldType="UiPath.DataService.Core.Models.EntityField" Operator="=" ValueIndex="0" />
-                                      </scg:List>
-                                    </uda:GroupFilter.Filters>
-                                    <uda:GroupFilter.Groups>
-                                      <scg:List x:TypeArguments="uda:GroupFilter" Capacity="0" />
-                                    </uda:GroupFilter.Groups>
-                                  </uda:GroupFilter>
-                                </uda:FilterArgument.Filter>
-                              </uda:FilterArgument>
-                            </uda:QueryEntityRecords.FilterArguments>
-                            <uda:QueryEntityRecords.FilterValues>
-                              <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                <InArgument x:TypeArguments="x:String">
-                                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_193">QueueItem.Reference</CSharpValue>
-                                </InArgument>
-                              </scg:List>
-                            </uda:QueryEntityRecords.FilterValues>
-                            <uda:QueryEntityRecords.OutputRecords>
-                              <OutArgument x:TypeArguments="scg:IList(r:ApprovalReqeust)">
-                                <CSharpReference x:TypeArguments="scg:IList(r:ApprovalReqeust)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_55">ApprovalRequestObjects</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.OutputRecords>
-                            <uda:QueryEntityRecords.TotalRecords>
-                              <OutArgument x:TypeArguments="x:Int64">
-                                <CSharpReference x:TypeArguments="x:Int64" sap2010:WorkflowViewState.IdRef="CSharpReference`1_54">CriminalRecordsObjectsCount</CSharpReference>
-                              </OutArgument>
-                            </uda:QueryEntityRecords.TotalRecords>
-                          </uda:QueryEntityRecords>
-                          <Assign DisplayName="Assign ApprovalRequestObject" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
-                            <Assign.To>
-                              <OutArgument x:TypeArguments="r:ApprovalReqeust">
-                                <CSharpReference x:TypeArguments="r:ApprovalReqeust" sap2010:WorkflowViewState.IdRef="CSharpReference`1_57">ApprovalRequestObject</CSharpReference>
-                              </OutArgument>
-                            </Assign.To>
-                            <Assign.Value>
-                              <InArgument x:TypeArguments="r:ApprovalReqeust">
-                                <CSharpValue x:TypeArguments="r:ApprovalReqeust" sap2010:WorkflowViewState.IdRef="CSharpValue`1_195">ApprovalRequestObjects[0]</CSharpValue>
-                              </InArgument>
-                            </Assign.Value>
-                          </Assign>
-                        </Sequence>
-                      </Parallel>
-                      <ui:LogMessage DisplayName="&quot;Getting data service objects success&quot;" sap:VirtualizedContainerService.HintSize="2590,141" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info">
+                      </Assign>
+                      <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+                        <ueab:ExcelProcessScopeX.Body>
+                          <ActivityAction x:TypeArguments="ui:IExcelProcess">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" ResizeWindow="None" WorkbookPath="Output\\ExtractedData.xlsx">
+                                <ueab:ExcelApplicationCard.Body>
+                                  <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                                    </ActivityAction.Argument>
+                                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_84">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ueab:ForEachSheetX DisplayName="For Each Excel Sheet" sap:VirtualizedContainerService.HintSize="484,245" sap2010:WorkflowViewState.IdRef="ForEachSheetX_1">
+                                        <ueab:ForEachSheetX.Body>
+                                          <ActivityAction x:TypeArguments="ue:WorksheetQuickHandle, x:Int32">
+                                            <ActivityAction.Argument1>
+                                              <DelegateInArgument x:TypeArguments="ue:WorksheetQuickHandle" Name="CurrentSheet" />
+                                            </ActivityAction.Argument1>
+                                            <ActivityAction.Argument2>
+                                              <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+                                            </ActivityAction.Argument2>
+                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                                              <Sequence.Variables>
+                                                <Variable x:TypeArguments="sd:DataTable" Name="dt_temp" />
+                                                <Variable x:TypeArguments="x:String" Name="voidTemp" />
+                                                <Variable x:TypeArguments="sd:DataRow" Name="FirstDataRow" />
+                                              </Sequence.Variables>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ueab:ReadRangeX DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="ReadRangeX_1">
+                                                <ueab:ReadRangeX.Range>
+                                                  <InArgument x:TypeArguments="ue:IReadRangeRef">
+                                                    <CSharpValue x:TypeArguments="ue:IReadRangeRef" sap2010:WorkflowViewState.IdRef="CSharpValue`1_214">CurrentSheet</CSharpValue>
+                                                  </InArgument>
+                                                </ueab:ReadRangeX.Range>
+                                                <ueab:ReadRangeX.SaveTo>
+                                                  <OutArgument x:TypeArguments="sd:DataTable">
+                                                    <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_68">dt_temp</CSharpReference>
+                                                  </OutArgument>
+                                                </ueab:ReadRangeX.SaveTo>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </ueab:ReadRangeX>
+                                              <Assign DisplayName="Assign datarow" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="sd:DataRow">
+                                                    <CSharpReference x:TypeArguments="sd:DataRow" sap2010:WorkflowViewState.IdRef="CSharpReference`1_73">FirstDataRow</CSharpReference>
+                                                  </OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="sd:DataRow">
+                                                    <CSharpValue x:TypeArguments="sd:DataRow" sap2010:WorkflowViewState.IdRef="CSharpValue`1_227">dt_temp.Rows[0]</CSharpValue>
+                                                  </InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                              <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="For Each new column Add key value pairs" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+                                                <ui:ForEach.Body>
+                                                  <ActivityAction x:TypeArguments="sd:DataColumn">
+                                                    <ActivityAction.Argument>
+                                                      <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="currentColumn" />
+                                                    </ActivityAction.Argument>
+                                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Assign DisplayName="Assign new key value pair" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="x:String">
+                                                            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_74">DicOfNewHireData[ currentColumn.ColumnName]</CSharpReference>
+                                                          </OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="x:String">
+                                                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_229">FirstDataRow[ currentColumn.ColumnName].ToString()</CSharpValue>
+                                                          </InArgument>
+                                                        </Assign.Value>
+                                                      </Assign>
+                                                    </Sequence>
+                                                  </ActivityAction>
+                                                </ui:ForEach.Body>
+                                                <ui:ForEach.Values>
+                                                  <InArgument x:TypeArguments="sc:IEnumerable">
+                                                    <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_219">dt_temp.Columns</CSharpValue>
+                                                  </InArgument>
+                                                </ui:ForEach.Values>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </ui:ForEach>
+                                            </Sequence>
+                                          </ActivityAction>
+                                        </ueab:ForEachSheetX.Body>
+                                        <ueab:ForEachSheetX.Workbook>
+                                          <InArgument x:TypeArguments="ue:IWorkbookQuickHandle">
+                                            <CSharpValue x:TypeArguments="ue:IWorkbookQuickHandle" sap2010:WorkflowViewState.IdRef="CSharpValue`1_215">Excel</CSharpValue>
+                                          </InArgument>
+                                        </ueab:ForEachSheetX.Workbook>
+                                      </ueab:ForEachSheetX>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ueab:ExcelApplicationCard.Body>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ueab:ExcelApplicationCard>
+                            </Sequence>
+                          </ActivityAction>
+                        </ueab:ExcelProcessScopeX.Body>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ueab:ExcelProcessScopeX>
+                      <ui:LogMessage DisplayName="&quot;Getting data service objects success&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info">
                         <ui:LogMessage.Message>
                           <InArgument x:TypeArguments="x:Object">
-                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_153">"Getting data service objects success"</CSharpValue>
+                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_213">"Getting data datables from attachment success"</CSharpValue>
                           </InArgument>
                         </ui:LogMessage.Message>
                       </ui:LogMessage>
                     </Sequence>
                     <FlowStep.Next>
-                      <FlowStep x:Name="__ReferenceID4">
+                      <FlowStep x:Name="__ReferenceID2">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">290,714</av:Point>
@@ -710,15 +571,15 @@
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:LogMessage>
                         <FlowStep.Next>
-                          <FlowStep x:Name="__ReferenceID3">
+                          <FlowStep x:Name="__ReferenceID1">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:Point x:Key="ShapeLocation">60,863.5</av:Point>
                                 <av:Size x:Key="ShapeSize">200,273</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">160,1136.5 160,1166.5 650,1166.5 650,1184</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">260,1000 520,1000 520,1118.5</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="Perform core processing&#xA;-------------------------------&#xA;- &#xA;-&#xA;-&#xA;&#xA;- Kind of exceptions to be &#xA;occured: SE, BE&#xA;&#xA;Outputs:&#xA;-&#xA;-" DisplayName="Core" sap:VirtualizedContainerService.HintSize="512,1375" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                            <Sequence sap2010:Annotation.AnnotationText="Perform core processing&#xA;-------------------------------&#xA;- &#xA;-&#xA;-&#xA;&#xA;- Kind of exceptions to be &#xA;occured: SE, BE&#xA;&#xA;Outputs:&#xA;-&#xA;-" DisplayName="Core" sap:VirtualizedContainerService.HintSize="200,273" sap2010:WorkflowViewState.IdRef="Sequence_75">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="ui:UiElement" Name="HomePageElement" />
                               </Sequence.Variables>
@@ -798,36 +659,12 @@
                                     <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                                       <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_186">Config</CSharpValue>
                                     </InArgument>
-                                    <InArgument x:TypeArguments="r:WorkStub" x:Key="in_WorkStubObject">
-                                      <CSharpValue x:TypeArguments="r:WorkStub" sap2010:WorkflowViewState.IdRef="CSharpValue`1_188">WorkStubObject</CSharpValue>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="r:CriminalRecord" x:Key="in_CriminalRecordObject">
-                                      <CSharpValue x:TypeArguments="r:CriminalRecord" sap2010:WorkflowViewState.IdRef="CSharpValue`1_189">CriminalRecordObject</CSharpValue>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="r:OtherOnboardData" x:Key="in_OtherDataObject">
-                                      <CSharpValue x:TypeArguments="r:OtherOnboardData" sap2010:WorkflowViewState.IdRef="CSharpValue`1_190">OtherOnboardDataObject</CSharpValue>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="r:EgyptianNationalIDs" x:Key="in_EgyptianIDObject">
-                                      <CSharpValue x:TypeArguments="r:EgyptianNationalIDs" sap2010:WorkflowViewState.IdRef="CSharpValue`1_191">EgyptianIDObject</CSharpValue>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="r:ApprovalReqeust" x:Key="in_ApprovalRequestObject">
-                                      <CSharpValue x:TypeArguments="r:ApprovalReqeust" sap2010:WorkflowViewState.IdRef="CSharpValue`1_197">ApprovalRequestObject</CSharpValue>
+                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="in_DicOfNewHireData">
+                                      <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_230">DicOfNewHireData</CSharpValue>
                                     </InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
-                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Core-Process.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="450,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="Core-Process.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                    <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_142">Config</CSharpValue>
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_QueueItem">
-                                    <CSharpValue x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpValue`1_143">QueueItem</CSharpValue>
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
-                                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_DicOfInfo" />
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
                               <ui:LogMessage DisplayName="&quot;Invoke Core process, Terminated&quot;" sap:VirtualizedContainerService.HintSize="450,141" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info">
                                 <ui:LogMessage.Message>
                                   <InArgument x:TypeArguments="x:Object">
@@ -837,57 +674,73 @@
                               </ui:LogMessage>
                             </Sequence>
                             <FlowStep.Next>
-                              <FlowStep x:Name="__ReferenceID2">
+                              <FlowStep x:Name="__ReferenceID3">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <av:Point x:Key="ShapeLocation">550,1184</av:Point>
-                                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                    <av:Point x:Key="ShapeLocation">420,1118.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,81</av:Size>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                                  <ui:CommentOut.Body>
-                                    <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_69">
-                                      <Sequence sap2010:Annotation.AnnotationText="Set Transaction to Success" DisplayName="Update Transaction" sap:VirtualizedContainerService.HintSize="200,112" sap2010:WorkflowViewState.IdRef="Sequence_25">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ui:LogMessage DisplayName="&quot;Invoke set transaction process, Started&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info">
-                                          <ui:LogMessage.Message>
-                                            <InArgument x:TypeArguments="x:Object">
-                                              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">"Invoke set transaction process, Started"</CSharpValue>
-                                            </InArgument>
-                                          </ui:LogMessage.Message>
-                                        </ui:LogMessage>
-                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SetTransaction.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Orchestrator\\SetTransaction.xaml">
-                                          <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="ui:QueueItem" x:Key="in_QueueItem">
-                                              <CSharpValue x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">QueueItem</CSharpValue>
-                                            </InArgument>
-                                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                              <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">Config</CSharpValue>
-                                            </InArgument>
-                                            <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                                              <CSharpValue x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59">null</CSharpValue>
-                                            </InArgument>
-                                            <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
-                                              <CSharpValue x:TypeArguments="ui:BusinessRuleException" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">null</CSharpValue>
-                                            </InArgument>
-                                          </ui:InvokeWorkflowFile.Arguments>
-                                        </ui:InvokeWorkflowFile>
-                                        <ui:LogMessage DisplayName="&quot;Invoke set transaction process, Terminated&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info">
-                                          <ui:LogMessage.Message>
-                                            <InArgument x:TypeArguments="x:Object">
-                                              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">"Invoke set transaction process, Terminated"</CSharpValue>
-                                            </InArgument>
-                                          </ui:LogMessage.Message>
-                                        </ui:LogMessage>
-                                      </Sequence>
-                                    </Sequence>
-                                  </ui:CommentOut.Body>
-                                </ui:CommentOut>
+                                <Sequence DisplayName="Send confirmation mail" sap:VirtualizedContainerService.HintSize="496,509" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                                  <Sequence.Variables>
+                                    <Variable x:TypeArguments="x:String" Name="HTML" />
+                                    <Variable x:TypeArguments="s:Exception" Name="SE" />
+                                    <Variable x:TypeArguments="x:String" Name="variable1" />
+                                    <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="DictofMailInfo" />
+                                  </Sequence.Variables>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Success confirmation mail preparation" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_36" UnSafe="False" WorkflowFileName="Mail\\BodyPreparation\\SuccessConfirmationMail.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                        <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_199">Config</CSharpValue>
+                                      </InArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_HTML">
+                                        <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_59">HTML</CSharpReference>
+                                      </OutArgument>
+                                      <OutArgument x:TypeArguments="s:Exception" x:Key="out_SE">
+                                        <CSharpReference x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="CSharpReference`1_58">SE</CSharpReference>
+                                      </OutArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_DisplayName">
+                                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_231">MailMessage.Sender.DisplayName</CSharpValue>
+                                      </InArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                  <Assign DisplayName="Assign DIctofInfo" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
+                                        <CSharpReference x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_60">DictofMailInfo</CSharpReference>
+                                      </OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
+                                        <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_205" xml:space="preserve">new Dictionary&lt;string, string&gt;(){
+	{"Subject", $"Employee onboarding on oracle success, Reference: {QueueItem.Reference}"},
+	{"To", QueueItem.SpecificContent["SenderMail"].ToString()},
+	{"Body", HTML}
+}</CSharpValue>
+                                      </InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <ui:ReplyToOutlookMailMessage AddBcc="{x:Null}" AddCc="{x:Null}" AddTo="{x:Null}" NewSubject="{x:Null}" ReplyFrom="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Reply To Outlook Mail Message" sap:VirtualizedContainerService.HintSize="434,122" sap2010:WorkflowViewState.IdRef="ReplyToOutlookMailMessage_1" Importance="Normal" ReplyAll="False">
+                                    <ui:ReplyToOutlookMailMessage.Body>
+                                      <InArgument x:TypeArguments="x:String">
+                                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_233">HTML</CSharpValue>
+                                      </InArgument>
+                                    </ui:ReplyToOutlookMailMessage.Body>
+                                    <ui:ReplyToOutlookMailMessage.Files>
+                                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                    </ui:ReplyToOutlookMailMessage.Files>
+                                    <ui:ReplyToOutlookMailMessage.MailMessage>
+                                      <InArgument x:TypeArguments="snm:MailMessage">
+                                        <CSharpValue x:TypeArguments="snm:MailMessage" sap2010:WorkflowViewState.IdRef="CSharpValue`1_232">MailMessage</CSharpValue>
+                                      </InArgument>
+                                    </ui:ReplyToOutlookMailMessage.MailMessage>
+                                  </ui:ReplyToOutlookMailMessage>
+                                </Sequence>
                               </FlowStep>
                             </FlowStep.Next>
                           </FlowStep>

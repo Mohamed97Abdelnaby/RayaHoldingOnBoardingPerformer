@@ -1,11 +1,13 @@
 {
-  "name": "RayaOnBoardingPerformer",
+  "name": "RayaOnBoardingPerformerMailVersion",
   "projectId": "4918c85c-14db-4c86-b610-9e9f4d33774f",
   "description": "Performer process for on boarding an employee in Raya holding companies",
   "main": "Main.xaml",
   "dependencies": {
+    "RPAHUB.BeautyMailRender.Activities": "[0.1.0.1005143228]",
     "UiPath.DataService.Activities": "[24.7.1]",
     "UiPath.Excel.Activities": "[2.22.4]",
+    "UiPath.IntegrationService.Activities": "[1.7.0]",
     "UiPath.Mail.Activities": "[1.21.1]",
     "UiPath.System.Activities": "[23.10.6]",
     "UiPath.Testing.Activities": "[23.10.1]",

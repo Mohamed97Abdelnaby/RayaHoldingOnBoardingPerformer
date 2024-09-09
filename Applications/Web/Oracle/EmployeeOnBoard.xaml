@@ -1,14 +1,10 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="EmployeeOnBoard" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:r="clr-namespace:RayaOnBoardingPerformer;assembly=DataService.RayaOnBoardingPerformer" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="EmployeeOnBoard" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:isactr="http://schemas.uipath.com/workflow/integration-service-activities/isactr" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_WorkStubObject" Type="InArgument(r:WorkStub)" />
-    <x:Property Name="in_CriminalRecordObject" Type="InArgument(r:CriminalRecord)" />
-    <x:Property Name="in_OtherDataObject" Type="InArgument(r:OtherOnboardData)" />
-    <x:Property Name="in_EgyptianIDObject" Type="InArgument(r:EgyptianNationalIDs)" />
-    <x:Property Name="in_ApprovalRequestObject" Type="InArgument(r:ApprovalReqeust)" />
+    <x:Property Name="in_DicOfNewHireData" Type="InArgument(scg:Dictionary(x:String, x:String))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1164,6656</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1240,5161</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -50,6 +46,11 @@
       <x:String>RayaOnBoardingPerformer</x:String>
       <x:String>UiPath.DataService.Definition</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -117,9 +118,17 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+      <AssemblyReference>RayaOnBoardingPerformerMailVersion.Core</AssemblyReference>
+      <AssemblyReference>RayaOnBoardingPerformerMailVersion.Core</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EmployeeOnBoard" sap:VirtualizedContainerService.HintSize="1174,6591" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="EmployeeOnBoard" sap:VirtualizedContainerService.HintSize="1174,5096" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="EnglishFirstName" />
       <Variable x:TypeArguments="x:String" Name="EnglishSecondName" />
@@ -136,279 +145,505 @@
       <Variable x:TypeArguments="x:String" Name="Type" />
       <Variable x:TypeArguments="x:String" Name="HiringDate" />
       <Variable x:TypeArguments="x:String" Name="Grade" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="InsuranceNotApplicableList" />
+      <Variable x:TypeArguments="s:DateTime" Name="NationalIDIssueDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="NationalIDExpiryDate" />
+      <Variable x:TypeArguments="x:String" Name="Religion" />
+      <Variable x:TypeArguments="x:String" Name="SocialStatus" />
+      <Variable x:TypeArguments="x:String" Name="Gender" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="Sequence Extract needed data" sap:VirtualizedContainerService.HintSize="1112,81" sap2010:WorkflowViewState.IdRef="Sequence_18">
+    <Sequence DisplayName="Sequence Extract needed data" sap:VirtualizedContainerService.HintSize="1112,736" sap2010:WorkflowViewState.IdRef="Sequence_18">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="ArabicNationalID" />
-        <Variable x:TypeArguments="s:DateTime" Name="NationalIDExpiryDate" />
         <Variable x:TypeArguments="x:String" Name="Position" />
         <Variable x:TypeArguments="x:String" Name="Department" />
         <Variable x:TypeArguments="x:String" Name="DirectManager" />
         <Variable x:TypeArguments="x:Decimal" Name="FixedPercent" />
+        <Variable x:TypeArguments="x:String" Name="ArabicFathersName" />
+        <Variable x:TypeArguments="x:String" Name="EnglishFullName" />
+        <Variable x:TypeArguments="x:String" Name="arabicToEnglishDate" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Multiple Assign All needed data" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign DisplayName="Multiple Assign Arabic first name and arabic father name" sap:VirtualizedContainerService.HintSize="479,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_33">ArabicFirstName</CSharpReference>
+                </OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_178">in_DicOfNewHireData["First Name"]</CSharpValue>
+                </InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_34">ArabicFathersName</CSharpReference>
+                </OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_179">in_DicOfNewHireData["Second Name"]</CSharpValue>
+                </InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:MultipleAssign>
+      <Parallel DisplayName="Parallel Translate NationalID Data" sap:VirtualizedContainerService.HintSize="479,52" sap2010:WorkflowViewState.IdRef="Parallel_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACqVXy3LbNhT9FQxX6YykynYyzXhnyY6jxo5Vy0oWnSwg8oqERQEMHnYkTz6nX9If6wFFKQTo1J3pwmPi4D7PvQCunpJ3gsrMjJW0XEjSyelTMiOu04IvStptJqd/fuklE1k5ewCeko98TclpslYZlfV3LzkXpir5ptm59jtMNltkUi0qK5TE1l1BLCe441Y8EDubsNoMU5pNzplVzBkasLtCGMZTiAi7YRktuSut8dsW+juNR2GLelmIvCBj2VfHSy+uFob0A2VMOYvAe6xQj/RAusc4y8RySZqkbYykXLIFMUMlpRYqC268ooRPI/TBBoKRGbPwImQ+YDP4Tgt87qyY2kzBkY9YVwjbeAs+tJ32ACzcbSrPjLEaaljPlLY3OvO0H3mO6gw/8dJ5qbyy/deqfzw8ft0fvukfnUDhQrp1m30vc/Kmb51eqP7w6PgNZNr64d73XqAYG/+54+9f6gqKHMV7Sq4Uz0abJtrk1GpHvWSqjGiqO9VizfUG7pJb+uo8g3upun+uVMob0T8cQRDNZa7JFiqbco34rCfEK7QCFr797uib7fTZHgw7DKDvFJTVai5NyVHYF0pw3EryP8Q+UpnP8RBhyWXueN49CFetjSDIWUWpWG7YXrMTMIAXYj5p9cS+fmdLLVYcNuroDui64FqkIab5IoaMQdSGQnBLesHFPZciwEeuzGGUyxAlmeMQhpgyMpYbc8vLGNtSWgTIZxytEDlHGBF0SXodWbrURKsAuZB5GSvOqq6xC2NVJ9gRN1/x0YampE0s9k7Ijr13uGqipCa6kwEYS2Nrl+4eB8KGVL6nhabHEBIyC4XGWkEvMvfeyWfKdabX1El3gtJ0MJkpiQMSwb9zcBh3zCUpnceSH/iWr8K0PxRrtHEoJCXPeIgpTbEtpzNwyF7hA6W/F7+E2xudb7YBdMVVuMbT4VD9yPAVtw8xdo0+zbnZRGBKIOQ52Q3+1iGqZK46jF776haiqx+dMlQo4vcjVfERO3d4jkIhpR/JV4G9GqnV+u+/ypCkm0yEPE+dvMeNEGIIO+rVKTeFDcmc4kpyuUOY8KX5VkSu2vu7bx5J3CqUMSbo1plOv81K9cBXHajbwzNYjDg6KxddJzNcbh3sETlECPmGi6UKEbm442tRhgiVSD2ECh5pOb2Krc83eeHCwzFfaYxpcbBznYXm59tFdPd9EmT9KBa10RjzS429/MBfSD8RzjFV3WCM0iKj//f0755P+L2px6PuZPnjGXz+2W+9ks9OAEX4kkJmwD4XmPuYcVWFHqSs15rPMEqW5Y/nV2AIqRWFbAZOXlVaVbg+LSzUjvy8yssKozLZl99pTwhmx+R0yUsDQm7JVEqC/Iag/Xrsasc/421H125mQi/stWqxZmr6AvrnUiwFqENImO4xkFqB8h2cT6SxXKZ0GLhAPdrCv2i1l6PBcDCEE/wwkBiKlf5AG8BOwFDRb/5xobMVhM6aGb3Jf58ASru4h3JcT2y8t7baTXz13QBWEPKYpwUhVbVyVd2gPqYDPtLqEc03sbRu8KbZEFnzE2XK0xXGqHYWv4VZNKHMxRTxs0uS+OnRRC/griXZNnJyPDh6e0jnJ234b+neVPVPndrcGE/ZMxzczO6A+bCw+rWtfBgfTxOSWF/zb1MsZ2IL6Hg4hCVuRrC6QteNC0h74po6+6MzKlW6qin6/g+NeBF78A0AAA==" ConnectionId="2442495c-75bb-493a-a8f3-3e739949cf8d" DisplayName="Translate Arabic Name" sap:VirtualizedContainerService.HintSize="334,254" sap2010:WorkflowViewState.IdRef="ConnectorActivity_1" UiPathActivityTypeId="44a6e8db-407e-373a-b4eb-84997a6c83fd">
+          <isactr:ConnectorActivity.FieldObjects>
+            <isactr:FieldObject Name="modelName" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">gpt-4o-2024-05-13</InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="inputText" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_115">$"{ArabicFirstName} {ArabicFathersName}"</CSharpValue>
+                </InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="language" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">English</InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="out_translatedText" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">EnglishFullName</CSharpReference>
+                </OutArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+          </isactr:ConnectorActivity.FieldObjects>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </isactr:ConnectorActivity>
+        <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACqVXy3LbNhT9FQxX6YykynYyzXhnyY6jxo5Vy0oWnSwg8oqERQEMHnYkTz6nX9If6wFFKQTo1J3pwmPi4D7PvQCunpJ3gsrMjJW0XEjSyelTMiOu04IvStptJqd/fuklE1k5ewCeko98TclpslYZlfV3LzkXpir5ptm59jtMNltkUi0qK5TE1l1BLCe441Y8EDubsNoMU5pNzplVzBkasLtCGMZTiAi7YRktuSut8dsW+juNR2GLelmIvCBj2VfHSy+uFob0A2VMOYvAe6xQj/RAusc4y8RySZqkbYykXLIFMUMlpRYqC268ooRPI/TBBoKRGbPwImQ+YDP4Tgt87qyY2kzBkY9YVwjbeAs+tJ32ACzcbSrPjLEaaljPlLY3OvO0H3mO6gw/8dJ5qbyy/deqfzw8ft0fvukfnUDhQrp1m30vc/Kmb51eqP7w6PgNZNr64d73XqAYG/+54+9f6gqKHMV7Sq4Uz0abJtrk1GpHvWSqjGiqO9VizfUG7pJb+uo8g3upun+uVMob0T8cQRDNZa7JFiqbco34rCfEK7QCFr797uib7fTZHgw7DKDvFJTVai5NyVHYF0pw3EryP8Q+UpnP8RBhyWXueN49CFetjSDIWUWpWG7YXrMTMIAXYj5p9cS+fmdLLVYcNuroDui64FqkIab5IoaMQdSGQnBLesHFPZciwEeuzGGUyxAlmeMQhpgyMpYbc8vLGNtSWgTIZxytEDlHGBF0SXodWbrURKsAuZB5GSvOqq6xC2NVJ9gRN1/x0YampE0s9k7Ijr13uGqipCa6kwEYS2Nrl+4eB8KGVL6nhabHEBIyC4XGWkEvMvfeyWfKdabX1El3gtJ0MJkpiQMSwb9zcBh3zCUpnceSH/iWr8K0PxRrtHEoJCXPeIgpTbEtpzNwyF7hA6W/F7+E2xudb7YBdMVVuMbT4VD9yPAVtw8xdo0+zbnZRGBKIOQ52Q3+1iGqZK46jF776haiqx+dMlQo4vcjVfERO3d4jkIhpR/JV4G9GqnV+u+/ypCkm0yEPE+dvMeNEGIIO+rVKTeFDcmc4kpyuUOY8KX5VkSu2vu7bx5J3CqUMSbo1plOv81K9cBXHajbwzNYjDg6KxddJzNcbh3sETlECPmGi6UKEbm442tRhgiVSD2ECh5pOb2Krc83eeHCwzFfaYxpcbBznYXm59tFdPd9EmT9KBa10RjzS429/MBfSD8RzjFV3WCM0iKj//f0755P+L2px6PuZPnjGXz+2W+9ks9OAEX4kkJmwD4XmPuYcVWFHqSs15rPMEqW5Y/nV2AIqRWFbAZOXlVaVbg+LSzUjvy8yssKozLZl99pTwhmx+R0yUsDQm7JVEqC/Iag/Xrsasc/421H125mQi/stWqxZmr6AvrnUiwFqENImO4xkFqB8h2cT6SxXKZ0GLhAPdrCv2i1l6PBcDCEE/wwkBiKlf5AG8BOwFDRb/5xobMVhM6aGb3Jf58ASru4h3JcT2y8t7baTXz13QBWEPKYpwUhVbVyVd2gPqYDPtLqEc03sbRu8KbZEFnzE2XK0xXGqHYWv4VZNKHMxRTxs0uS+OnRRC/griXZNnJyPDh6e0jnJ234b+neVPVPndrcGE/ZMxzczO6A+bCw+rWtfBgfTxOSWF/zb1MsZ2IL6Hg4hCVuRrC6QteNC0h74po6+6MzKlW6qin6/g+NeBF78A0AAA==" ConnectionId="2442495c-75bb-493a-a8f3-3e739949cf8d" DisplayName="Translate Arabic Name" sap:VirtualizedContainerService.HintSize="334,254" sap2010:WorkflowViewState.IdRef="ConnectorActivity_2" UiPathActivityTypeId="44a6e8db-407e-373a-b4eb-84997a6c83fd">
+          <isactr:ConnectorActivity.FieldObjects>
+            <isactr:FieldObject Name="modelName" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">gpt-4o-2024-05-13</InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="inputText" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_212">in_DicOfNewHireData["Gender"]</CSharpValue>
+                </InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="language" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">English</InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="out_translatedText" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_69">Gender</CSharpReference>
+                </OutArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+          </isactr:ConnectorActivity.FieldObjects>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </isactr:ConnectorActivity>
+        <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACqVXy3LbNhT9FQxX6YykynYyzXhnyY6jxo5Vy0oWnSwg8oqERQEMHnYkTz6nX9If6wFFKQTo1J3pwmPi4D7PvQCunpJ3gsrMjJW0XEjSyelTMiOu04IvStptJqd/fuklE1k5ewCeko98TclpslYZlfV3LzkXpir5ptm59jtMNltkUi0qK5TE1l1BLCe441Y8EDubsNoMU5pNzplVzBkasLtCGMZTiAi7YRktuSut8dsW+juNR2GLelmIvCBj2VfHSy+uFob0A2VMOYvAe6xQj/RAusc4y8RySZqkbYykXLIFMUMlpRYqC268ooRPI/TBBoKRGbPwImQ+YDP4Tgt87qyY2kzBkY9YVwjbeAs+tJ32ACzcbSrPjLEaaljPlLY3OvO0H3mO6gw/8dJ5qbyy/deqfzw8ft0fvukfnUDhQrp1m30vc/Kmb51eqP7w6PgNZNr64d73XqAYG/+54+9f6gqKHMV7Sq4Uz0abJtrk1GpHvWSqjGiqO9VizfUG7pJb+uo8g3upun+uVMob0T8cQRDNZa7JFiqbco34rCfEK7QCFr797uib7fTZHgw7DKDvFJTVai5NyVHYF0pw3EryP8Q+UpnP8RBhyWXueN49CFetjSDIWUWpWG7YXrMTMIAXYj5p9cS+fmdLLVYcNuroDui64FqkIab5IoaMQdSGQnBLesHFPZciwEeuzGGUyxAlmeMQhpgyMpYbc8vLGNtSWgTIZxytEDlHGBF0SXodWbrURKsAuZB5GSvOqq6xC2NVJ9gRN1/x0YampE0s9k7Ijr13uGqipCa6kwEYS2Nrl+4eB8KGVL6nhabHEBIyC4XGWkEvMvfeyWfKdabX1El3gtJ0MJkpiQMSwb9zcBh3zCUpnceSH/iWr8K0PxRrtHEoJCXPeIgpTbEtpzNwyF7hA6W/F7+E2xudb7YBdMVVuMbT4VD9yPAVtw8xdo0+zbnZRGBKIOQ52Q3+1iGqZK46jF776haiqx+dMlQo4vcjVfERO3d4jkIhpR/JV4G9GqnV+u+/ypCkm0yEPE+dvMeNEGIIO+rVKTeFDcmc4kpyuUOY8KX5VkSu2vu7bx5J3CqUMSbo1plOv81K9cBXHajbwzNYjDg6KxddJzNcbh3sETlECPmGi6UKEbm442tRhgiVSD2ECh5pOb2Krc83eeHCwzFfaYxpcbBznYXm59tFdPd9EmT9KBa10RjzS429/MBfSD8RzjFV3WCM0iKj//f0755P+L2px6PuZPnjGXz+2W+9ks9OAEX4kkJmwD4XmPuYcVWFHqSs15rPMEqW5Y/nV2AIqRWFbAZOXlVaVbg+LSzUjvy8yssKozLZl99pTwhmx+R0yUsDQm7JVEqC/Iag/Xrsasc/421H125mQi/stWqxZmr6AvrnUiwFqENImO4xkFqB8h2cT6SxXKZ0GLhAPdrCv2i1l6PBcDCEE/wwkBiKlf5AG8BOwFDRb/5xobMVhM6aGb3Jf58ASru4h3JcT2y8t7baTXz13QBWEPKYpwUhVbVyVd2gPqYDPtLqEc03sbRu8KbZEFnzE2XK0xXGqHYWv4VZNKHMxRTxs0uS+OnRRC/griXZNnJyPDh6e0jnJ234b+neVPVPndrcGE/ZMxzczO6A+bCw+rWtfBgfTxOSWF/zb1MsZ2IL6Hg4hCVuRrC6QteNC0h74po6+6MzKlW6qin6/g+NeBF78A0AAA==" ConnectionId="2442495c-75bb-493a-a8f3-3e739949cf8d" DisplayName="Translate Arabic Name" sap:VirtualizedContainerService.HintSize="334,254" sap2010:WorkflowViewState.IdRef="ConnectorActivity_7" UiPathActivityTypeId="44a6e8db-407e-373a-b4eb-84997a6c83fd">
+          <isactr:ConnectorActivity.FieldObjects>
+            <isactr:FieldObject Name="modelName" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">gpt-4o-2024-05-13</InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="inputText" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_221">in_DicOfNewHireData["Social"]</CSharpValue>
+                </InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="language" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <InArgument x:TypeArguments="x:String">English</InArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+            <isactr:FieldObject Name="out_translatedText" Type="FieldArgument">
+              <isactr:FieldObject.Value>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_71">SocialStatus</CSharpReference>
+                </OutArgument>
+              </isactr:FieldObject.Value>
+            </isactr:FieldObject>
+          </isactr:ConnectorActivity.FieldObjects>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </isactr:ConnectorActivity>
+      </Parallel>
+      <isactr:ConnectorActivity Configuration="H4sIAAAAAAAACqVXy3LbNhT9FQxX6YykynYyzXhnyY6jxo5Vy0oWnSwg8oqERQEMHnYkTz6nX9If6wFFKQTo1J3pwmPi4D7PvQCunpJ3gsrMjJW0XEjSyelTMiOu04IvStptJqd/fuklE1k5ewCeko98TclpslYZlfV3LzkXpir5ptm59jtMNltkUi0qK5TE1l1BLCe441Y8EDubsNoMU5pNzplVzBkasLtCGMZTiAi7YRktuSut8dsW+juNR2GLelmIvCBj2VfHSy+uFob0A2VMOYvAe6xQj/RAusc4y8RySZqkbYykXLIFMUMlpRYqC268ooRPI/TBBoKRGbPwImQ+YDP4Tgt87qyY2kzBkY9YVwjbeAs+tJ32ACzcbSrPjLEaaljPlLY3OvO0H3mO6gw/8dJ5qbyy/deqfzw8ft0fvukfnUDhQrp1m30vc/Kmb51eqP7w6PgNZNr64d73XqAYG/+54+9f6gqKHMV7Sq4Uz0abJtrk1GpHvWSqjGiqO9VizfUG7pJb+uo8g3upun+uVMob0T8cQRDNZa7JFiqbco34rCfEK7QCFr797uib7fTZHgw7DKDvFJTVai5NyVHYF0pw3EryP8Q+UpnP8RBhyWXueN49CFetjSDIWUWpWG7YXrMTMIAXYj5p9cS+fmdLLVYcNuroDui64FqkIab5IoaMQdSGQnBLesHFPZciwEeuzGGUyxAlmeMQhpgyMpYbc8vLGNtSWgTIZxytEDlHGBF0SXodWbrURKsAuZB5GSvOqq6xC2NVJ9gRN1/x0YampE0s9k7Ijr13uGqipCa6kwEYS2Nrl+4eB8KGVL6nhabHEBIyC4XGWkEvMvfeyWfKdabX1El3gtJ0MJkpiQMSwb9zcBh3zCUpnceSH/iWr8K0PxRrtHEoJCXPeIgpTbEtpzNwyF7hA6W/F7+E2xudb7YBdMVVuMbT4VD9yPAVtw8xdo0+zbnZRGBKIOQ52Q3+1iGqZK46jF776haiqx+dMlQo4vcjVfERO3d4jkIhpR/JV4G9GqnV+u+/ypCkm0yEPE+dvMeNEGIIO+rVKTeFDcmc4kpyuUOY8KX5VkSu2vu7bx5J3CqUMSbo1plOv81K9cBXHajbwzNYjDg6KxddJzNcbh3sETlECPmGi6UKEbm442tRhgiVSD2ECh5pOb2Krc83eeHCwzFfaYxpcbBznYXm59tFdPd9EmT9KBa10RjzS429/MBfSD8RzjFV3WCM0iKj//f0755P+L2px6PuZPnjGXz+2W+9ks9OAEX4kkJmwD4XmPuYcVWFHqSs15rPMEqW5Y/nV2AIqRWFbAZOXlVaVbg+LSzUjvy8yssKozLZl99pTwhmx+R0yUsDQm7JVEqC/Iag/Xrsasc/421H125mQi/stWqxZmr6AvrnUiwFqENImO4xkFqB8h2cT6SxXKZ0GLhAPdrCv2i1l6PBcDCEE/wwkBiKlf5AG8BOwFDRb/5xobMVhM6aGb3Jf58ASru4h3JcT2y8t7baTXz13QBWEPKYpwUhVbVyVd2gPqYDPtLqEc03sbRu8KbZEFnzE2XK0xXGqHYWv4VZNKHMxRTxs0uS+OnRRC/griXZNnJyPDh6e0jnJ234b+neVPVPndrcGE/ZMxzczO6A+bCw+rWtfBgfTxOSWF/zb1MsZ2IL6Hg4hCVuRrC6QteNC0h74po6+6MzKlW6qin6/g+NeBF78A0AAA==" ConnectionId="2442495c-75bb-493a-a8f3-3e739949cf8d" DisplayName="Translate Religion" sap:VirtualizedContainerService.HintSize="479,254" sap2010:WorkflowViewState.IdRef="ConnectorActivity_8" UiPathActivityTypeId="44a6e8db-407e-373a-b4eb-84997a6c83fd">
+        <isactr:ConnectorActivity.FieldObjects>
+          <isactr:FieldObject Name="modelName" Type="FieldArgument">
+            <isactr:FieldObject.Value>
+              <InArgument x:TypeArguments="x:String">gpt-35-turbo-0125</InArgument>
+            </isactr:FieldObject.Value>
+          </isactr:FieldObject>
+          <isactr:FieldObject Name="inputText" Type="FieldArgument">
+            <isactr:FieldObject.Value>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_222">in_DicOfNewHireData["Religion"]</CSharpValue>
+              </InArgument>
+            </isactr:FieldObject.Value>
+          </isactr:FieldObject>
+          <isactr:FieldObject Name="language" Type="FieldArgument">
+            <isactr:FieldObject.Value>
+              <InArgument x:TypeArguments="x:String">English</InArgument>
+            </isactr:FieldObject.Value>
+          </isactr:FieldObject>
+          <isactr:FieldObject Name="out_translatedText" Type="FieldArgument">
+            <isactr:FieldObject.Value>
+              <OutArgument x:TypeArguments="x:String">
+                <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_73">Religion</CSharpReference>
+              </OutArgument>
+            </isactr:FieldObject.Value>
+          </isactr:FieldObject>
+        </isactr:ConnectorActivity.FieldObjects>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </isactr:ConnectorActivity>
+      <ui:MultipleAssign DisplayName="Multiple Assign All needed data" sap:VirtualizedContainerService.HintSize="479,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="32">
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">ArabicNationalID</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_36">ArabicNationalID</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">in_EgyptianIDObject.IDNumberArabic</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_180">in_DicOfNewHireData["ID Number"].ToString()</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">EnglishNationalID</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_37">EnglishNationalID</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">in_EgyptianIDObject.IDNumberEnglish</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_136">new string(ArabicNationalID.Select(c =&gt; char.IsDigit(c) ? (char)(c - '٠' + '0') : c).ToArray())</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_50">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_72">arabicToEnglishDate</CSharpReference>
+                </OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_218" xml:space="preserve">new string(in_DicOfNewHireData["Expire Date"].ToString()
+    .Select(c =&gt; char.IsDigit(c) ? (char)(c - '٠' + '0') : c)
+    .ToArray())</CSharpValue>
+                </InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="s:DateTime">
-                  <CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">NationalIDExpiryDate</CSharpReference>
+                  <CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_65">NationalIDExpiryDate</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="s:DateTime">
-                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">in_EgyptianIDObject.ExpiryDate.Value.Date</CSharpValue>
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_220">DateTime.ParseExact(arabicToEnglishDate, "MM/dd/yyyy", null)</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">EnglishFirstName</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_40">EnglishFirstName</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">in_EgyptianIDObject.FullNameEnglish.Split(" ", StringSplitOptions.None)[0]</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_139">EnglishFullName.Split(" ", StringSplitOptions.None)[0]</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">EnglishSecondName</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_41">EnglishSecondName</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">in_EgyptianIDObject.FullNameEnglish.Split(" ", StringSplitOptions.None)[1]</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_140">EnglishFullName.Split(" ", StringSplitOptions.None)[1]</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">EnglishThirdName</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_42">EnglishThirdName</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">in_EgyptianIDObject.FullNameEnglish.Split(" ", StringSplitOptions.None)[2]</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_141">EnglishFullName.Split(" ", StringSplitOptions.None)[2]</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">EnglishFourthName</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_43">EnglishFourthName</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">in_EgyptianIDObject.FullNameEnglish.Split(" ", StringSplitOptions.None)[3]</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_142">EnglishFullName.Split(" ", StringSplitOptions.None)[3]</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">ArabicFirstName</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_44">ArabicFirstName</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_41">in_EgyptianIDObject.FullNameArabic.Split(" ", StringSplitOptions.None)[0]</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_182">in_DicOfNewHireData["First Name"].ToString()</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">ArabicSecondName</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_45">ArabicSecondName</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_42">in_EgyptianIDObject.FullNameArabic.Split(" ", StringSplitOptions.None)[1]</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_183">in_DicOfNewHireData["Second Name"].ToString().Split(" ", StringSplitOptions.None)[0]</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">ArabicThirdName</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">ArabicThirdName</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_43">in_EgyptianIDObject.FullNameArabic.Split(" ", StringSplitOptions.None)[2]</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_184">in_DicOfNewHireData["Second Name"].ToString().Split(" ", StringSplitOptions.None)[1]</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_37">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_15">ArabicFourthName</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_47">ArabicFourthName</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_44">in_EgyptianIDObject.FullNameArabic.Split(" ", StringSplitOptions.None)[3]</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_185">in_DicOfNewHireData["Second Name"].ToString().Split(" ", StringSplitOptions.None)[2]</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">BirthDate</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_48">BirthDate</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48">new DateTime((EnglishNationalID[0] == '2' ? 1900 : 2000) + int.Parse(EnglishNationalID.Substring(1, 2)), int.Parse(EnglishNationalID.Substring(3, 2)), int.Parse(EnglishNationalID.Substring(5, 2))).ToString("dd/MMM/yyyy")</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_147">new DateTime((EnglishNationalID[0] == '2' ? 1900 : 2000) + int.Parse(EnglishNationalID.Substring(1, 2)), int.Parse(EnglishNationalID.Substring(3, 2)), int.Parse(EnglishNationalID.Substring(5, 2))).ToString("dd/MMM/yyyy")</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">Position</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_49">Position</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">in_ApprovalRequestObject.Position</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_186">in_DicOfNewHireData["Position"].ToString()</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">Department</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_50">Department</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">in_ApprovalRequestObject.Department</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_187">in_DicOfNewHireData["Department"].ToString()</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_41">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_20">DirectManager</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_51">DirectManager</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">in_ApprovalRequestObject.DirectManager</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_188">in_DicOfNewHireData["Direct Manager"].ToString()</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:Decimal">
-                  <CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">FixedPercent</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_52">FixedPercent</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:Decimal">
-                  <CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_72">(Decimal)in_ApprovalRequestObject.FixedPercent</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_189">Decimal.Parse(in_DicOfNewHireData["Fixed Percent"].ToString())</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_43">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">Grade</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_53">Grade</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_65">in_ApprovalRequestObject.Grade</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_190">in_DicOfNewHireData["Grade"].ToString()</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_44">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">HiringDate</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_54">HiringDate</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">in_ApprovalRequestObject.HiringDate</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_191">in_DicOfNewHireData["Hiring Date"].ToString()</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_45">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:String">
-                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">Type</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_55">Type</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:String">
-                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_67">in_ApprovalRequestObject.Type</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_192">in_DicOfNewHireData["Type"].ToString()</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_46">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:Decimal">
-                  <CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">Salary</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_56">Salary</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:Decimal">
-                  <CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">(Decimal)in_ApprovalRequestObject.Salary</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_193">Decimal.Parse(in_DicOfNewHireData["Salary"].ToString())</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
-            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_47">
               <ui:AssignOperation.To>
                 <OutArgument x:TypeArguments="x:Decimal">
-                  <CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">VariablePercent</CSharpReference>
+                  <CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_57">VariablePercent</CSharpReference>
                 </OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
                 <InArgument x:TypeArguments="x:Decimal">
-                  <CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71">(Decimal)in_ApprovalRequestObject.VariablePercent</CSharpValue>
+                  <CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_194">Decimal.Parse(in_DicOfNewHireData["Variable Percent"].ToString())</CSharpValue>
+                </InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_48">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">
+                  <CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_58">InsuranceNotApplicableList</CSharpReference>
+                </OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)">
+                  <CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_157">new List&lt;string&gt;(){"casual, trainee, consultant"}</CSharpValue>
+                </InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap:VirtualizedContainerService.HintSize="334,25" sap2010:WorkflowViewState.IdRef="AssignOperation_49">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="s:DateTime">
+                  <CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_61">NationalIDIssueDate</CSharpReference>
+                </OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="s:DateTime">
+                  <CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_206">NationalIDExpiryDate.AddYears(-7)</CSharpValue>
                 </InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
@@ -422,13 +657,13 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:MultipleAssign>
     </Sequence>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: Oracle Fusion Cloud Applications" sap:VirtualizedContainerService.HintSize="1112,6359" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" OpenMode="IfNotOpen" ScopeGuid="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Edge: Oracle Fusion Cloud Applications" sap:VirtualizedContainerService.HintSize="1112,4028" sap2010:WorkflowViewState.IdRef="NApplicationCard_3" InteractionMode="Simulate" OpenMode="IfNotOpen" ScopeGuid="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1078,7213" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1078,3811" sap2010:WorkflowViewState.IdRef="Sequence_15">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -513,10 +748,10 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="Hiring date: Today's date&#xA;Company: Holding&#xA;Hire method: Hire" DisplayName="Fill in When and why" sap:VirtualizedContainerService.HintSize="1016,1217" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence sap2010:Annotation.AnnotationText="Hiring date: Today's date&#xA;Company: Holding&#xA;Hire method: Hire" DisplayName="Fill in When and why" sap:VirtualizedContainerService.HintSize="1016,138" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
@@ -654,18 +889,18 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="First name&#xA;Second name&#xA;" DisplayName="Fill in personal details" sap:VirtualizedContainerService.HintSize="1016,138" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence sap2010:Annotation.AnnotationText="First name&#xA;Second name&#xA;" DisplayName="Fill in personal details" sap:VirtualizedContainerService.HintSize="1016,1796" sap2010:WorkflowViewState.IdRef="Sequence_12">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Sequence set global data" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence DisplayName="Sequence set global data" sap:VirtualizedContainerService.HintSize="450,1382" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -740,7 +975,7 @@
                     </InArgument>
                   </uix:NTypeInto.Text>
                 </uix:NTypeInto>
-                <ui:LogMessage DisplayName="&quot;Entering global data&quot;" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_10">
+                <ui:LogMessage DisplayName="&quot;Entering global data&quot;" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_10">
                   <ui:LogMessage.Message>
                     <InArgument x:TypeArguments="x:Object">
                       <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">"Entering global data success"</CSharpValue>
@@ -1044,7 +1279,7 @@
                   </uix:NTypeInto.Target>
                   <uix:NTypeInto.Text>
                     <InArgument x:TypeArguments="x:String">
-                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">in_EgyptianIDObject.IssueDate.Value.Date.ToString("dd/MMM/yyyy")</CSharpValue>
+                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_197">NationalIDIssueDate.Date.ToString("dd/MMM/yyyy")</CSharpValue>
                     </InArgument>
                   </uix:NTypeInto.Text>
                 </uix:NTypeInto>
@@ -1060,7 +1295,7 @@
                   </uix:NTypeInto.Target>
                   <uix:NTypeInto.Text>
                     <InArgument x:TypeArguments="x:String">
-                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">in_EgyptianIDObject.ExpiryDate.Value.Date.ToString("dd/MMM/yyyy")</CSharpValue>
+                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_208">NationalIDExpiryDate.Date.ToString("dd/MMM/yyyy")</CSharpValue>
                     </InArgument>
                   </uix:NTypeInto.Text>
                 </uix:NTypeInto>
@@ -1079,6 +1314,24 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
+              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_18">
+                <ui:CommentOut.Body>
+                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,201" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Delay DisplayName="Delay 5 seconds" Duration="00:00:02" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_7" />
+                  </Sequence>
+                </ui:CommentOut.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:CommentOut>
               <uix:NCheckState DisplayName="Check App State 'Addresses'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NCheckState.IfExists>
                   <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,455" sap2010:WorkflowViewState.IdRef="Sequence_31">
@@ -1116,7 +1369,7 @@
                   </Sequence>
                 </uix:NCheckState.IfNotExists>
                 <uix:NCheckState.Target>
-                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18496671231021611&amp;_afrWindowMode=0&amp;_afrWindowId=qnhksd8b0&amp;_adf.ctrl-state=pskjxbpui_399&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="82fb1335-35ef-4eb1-b3cf-90c547c7f33b" CvTextArea="339, 365, 113, 24" CvTextArgument="Addresses" CvType="Text" DesignTimeRectangle="341, 354, 788, 47" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Addresses'" FullSelectorArgument="&lt;webctrl tableRow='1' tag='TD' aaname='Addresses' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='x1ns' aaname='Addresses' check:innerText='Addresses' /&gt;" Guid="13402245-2224-48a9-bddc-dd0f80d4c93e" InformativeScreenshot="9b94cbf466caa9f173797c349c50202c.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='ibxr3jlnc' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18496671231021611&amp;_afrWindowMode=0&amp;_afrWindowId=qnhksd8b0&amp;_adf.ctrl-state=pskjxbpui_399&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="82fb1335-35ef-4eb1-b3cf-90c547c7f33b" CvTextArea="339, 365, 113, 24" CvTextArgument="Addresses" CvType="Text" DesignTimeRectangle="341, 354, 788, 47" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Addresses'" FullSelectorArgument="&lt;webctrl tableRow='1' tag='TD' aaname='Addresses' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='x1ns' aaname='Addresses' check:innerText='Addresses' /&gt;" Guid="13402245-2224-48a9-bddc-dd0f80d4c93e" InformativeScreenshot="be1a8157a93427c791c465b9ee7e579d.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='ibxr3jlnc' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
                 </uix:NCheckState.Target>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1125,35 +1378,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uix:NCheckState>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_12">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Sequence_39">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Addresses'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_39" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Egypt" Version="V3">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18035837487301875&amp;_afrWindowMode=0&amp;_afrWindowId=h1ldn26gx&amp;_adf.ctrl-state=se53r5z3c_269&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="493, 489, 385, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' aaname='Country' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' aaname='Country' class='x1s6' /&gt;" Guid="9ade8b6b-013a-4089-b884-4bdc251e485c" InformativeScreenshot="ddebf3329471573939e950ce6b56a455.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
-                              <uix:Target CVScreenId="e2f9f1ea-81c6-49c3-bbe2-a3fae3816801" CvTextArea="339, 365, 113, 24" CvTextArgument="Addresses" CvType="Text" DesignTimeRectangle="341, 354, 788, 47" ElementType="Text" FriendlyName="'Addresses'" FullSelectorArgument="&lt;webctrl tag='TD' aaname='Addresses' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='x1ns' aaname='Addresses' check:innerText='Addresses' /&gt;" SearchSteps="Selector" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                        </uix:TargetAnchorable>
-                      </uix:NTypeInto.Target>
-                    </uix:NTypeInto>
-                  </Sequence>
-                </ui:CommentOut.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:CommentOut>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_14">
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_14">
                 <ui:LogMessage.Message>
                   <InArgument x:TypeArguments="x:Object">
                     <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_76">"Filling in address success"</CSharpValue>
@@ -1176,10 +1401,10 @@
                   </InArgument>
                 </ui:LogMessage.Message>
               </ui:LogMessage>
-              <uix:NSelectItem DisplayName="Select Item 'Marital Status'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NSelectItem_14" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+              <uix:NSelectItem DisplayName="Select Item 'Marital Status'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_14" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NSelectItem.Item>
                   <InArgument x:TypeArguments="x:String">
-                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_73">in_EgyptianIDObject.SocialEnglish</CSharpValue>
+                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_214">SocialStatus</CSharpValue>
                   </InArgument>
                 </uix:NSelectItem.Item>
                 <uix:NSelectItem.Items>
@@ -1202,15 +1427,15 @@
                 </uix:NSelectItem.Target>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uix:NSelectItem>
-              <uix:NSelectItem DisplayName="Select Item 'Religion'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NSelectItem_15" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+              <uix:NSelectItem DisplayName="Select Item 'Religion'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_15" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NSelectItem.Item>
                   <InArgument x:TypeArguments="x:String">
-                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_74">in_EgyptianIDObject.ReligionEnglish</CSharpValue>
+                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_215">Religion</CSharpValue>
                   </InArgument>
                 </uix:NSelectItem.Item>
                 <uix:NSelectItem.Items>
@@ -1232,7 +1457,7 @@
                 </uix:NSelectItem.Target>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -1396,10 +1621,10 @@
                 </ui:LogMessage.Message>
               </ui:LogMessage>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Fill in employment details" sap:VirtualizedContainerService.HintSize="1016,3693" sap2010:WorkflowViewState.IdRef="Sequence_27">
+            <Sequence sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Fill in employment details" sap:VirtualizedContainerService.HintSize="450,2566" sap2010:WorkflowViewState.IdRef="Sequence_27">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
@@ -1451,50 +1676,6 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uix:NCheckState>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_13">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Sequence_40">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'Active -'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_41" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Active - No Payroll" Version="V3">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18045617640836514&amp;_afrWindowMode=0&amp;_afrWindowId=yeg62upw0&amp;_adf.ctrl-state=se53r5z3c_1106&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 363, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Active -'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' aaname='Assignment Status' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' class='x2h' aaname='Assignment Status' /&gt;" Guid="3680243c-3ac1-4f35-91c7-16c51c88c3f8" ImageBase64="" InformativeScreenshot="934bfce64d084969fdd0816328908741.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
-                      </uix:NTypeInto.Target>
-                    </uix:NTypeInto>
-                  </Sequence>
-                </ui:CommentOut.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:CommentOut>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_14">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Sequence_41">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'Permanent'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_42" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Casual" Version="V3">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18045617640836514&amp;_afrWindowMode=0&amp;_afrWindowId=yeg62upw0&amp;_adf.ctrl-state=se53r5z3c_1106&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 180, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Permanent'" FullSelectorArgument="&lt;webctrl aaname='Person Type' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Person Type' tag='INPUT' type='text' class='x2h' /&gt;" Guid="19838783-7bfc-42a7-bf06-58593bf940c6" ImageBase64="" InformativeScreenshot="7cb9cdac2d9ebefd14094c253381b4de.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
-                      </uix:NTypeInto.Target>
-                    </uix:NTypeInto>
-                  </Sequence>
-                </ui:CommentOut.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:CommentOut>
               <Delay DisplayName="Delay 5 seconds" Duration="00:00:05" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_2" />
               <uix:NSelectItem DisplayName="Select Item 'Active -'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_37" Item="Active - Payroll Eligible" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NSelectItem.Items>
@@ -1542,7 +1723,7 @@
                 </uix:NSelectItem.Target>
               </uix:NSelectItem>
               <Delay DisplayName="Delay 5 seconds" Duration="00:00:05" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_3" />
-              <uix:NSelectItem DisplayName="Select Item 'Senior Specialist'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_36" Item="Senior Specialist (Treasury) - Treasury2763Senior Specialist (Treasury)Treasury - 1946" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+              <uix:NSelectItem DisplayName="Select Item 'Senior Specialist'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NSelectItem_36" Item="Senior Specialist (Treasury) - Treasury2763Senior Specialist (Treasury)Treasury - 1946" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NSelectItem.Items>
                   <scg:List x:TypeArguments="x:String" Capacity="5">
                     <x:String>NameCodeJob NameDepartment Name</x:String>
@@ -1555,14 +1736,33 @@
                 <uix:NSelectItem.Target>
                   <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18050780796234978&amp;_afrWindowMode=0&amp;_afrWindowId=raotjib74&amp;_adf.ctrl-state=jv3tgzkbn_143&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 367, 411, 28" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Senior Specialist'" FullSelectorArgument="&lt;webctrl aria-label='Position' aria-role='combobox' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Position' aria-role='combobox' tag='SPAN' type='' class='x1s5' aaname='' /&gt;" Guid="98efa7c0-06cc-4316-a380-91e6e0f98a12" ImageBase64="" InformativeScreenshot="fb9c33f46b97828977f55d24d65fe254.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='jh9v5n6hu' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
                 </uix:NSelectItem.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </uix:NSelectItem>
-              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Yes'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_24" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Yes'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NClick_24" InteractionMode="DebuggerApi" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NClick.Target>
                   <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18539611250972123&amp;_afrWindowMode=0&amp;_afrWindowId=mbmriz2mv&amp;_adf.ctrl-state=srcpawzhx_159&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="26acb8b1-fe9c-419b-9b54-240019e7fcc3" CvElementArea="792, 537, 73, 35" CvTextArea="817, 547, 21, 13" CvTextArgument="Yes" CvType="Button" DesignTimeRectangle="812, 547, 25, 14" DesignTimeScaleFactor="1" FriendlyName="'Yes'" FullSelectorArgument="&lt;webctrl tableRow='1' tag='SPAN' aaname='es' visibleinnertext='Yes' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='SPAN' aaname='es' visibleinnertext='Yes' class='xrk' check:text='Yes' /&gt;" Guid="ebfb8d71-18b1-4189-a4a5-2b7f5c926647" InformativeScreenshot="3e12b5caefe50bc61657339b8936c653.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='1cs08ffq9' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                 </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </uix:NClick>
-              <Delay DisplayName="Delay 5 seconds" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Delay_4" />
-              <uix:NSelectItem DisplayName="Select Item 'Location'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_39" Item="6 October - WH (El Shames)15Egypt" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+              <Delay DisplayName="Delay 5 seconds" Duration="00:00:03" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="Delay_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Delay>
+              <uix:NSelectItem DisplayName="Select Item 'Location'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NSelectItem_39" Item="6 October - WH (El Shames)15Egypt" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NSelectItem.Items>
                   <scg:List x:TypeArguments="x:String" Capacity="3">
                     <x:String>NameCodeTown or CityCountry Name</x:String>
@@ -1573,35 +1773,25 @@
                 <uix:NSelectItem.Target>
                   <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18540159624562912&amp;_afrWindowMode=0&amp;_afrWindowId=vn1va4oue&amp;_adf.ctrl-state=srcpawzhx_312&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="8eec383f-4e44-47ab-9d5e-7ed4650582b5" CvTextArea="496, 348, 88, 13" CvTextArgument="Select a value" CvType="Text" DesignTimeRectangle="492, 341, 411, 28" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Location'" FullSelectorArgument="&lt;webctrl aria-label='Location' aria-role='combobox' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Location' aria-role='combobox' tag='SPAN' type='' class='x1s5' aaname='' /&gt;" Guid="d39029b7-0978-4454-b1b7-f7b2e8e416c9" ImageBase64="" InformativeScreenshot="d86a56154ab4c8d09673a7bc7fbdc988.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='z0fwk6yvi' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
                 </uix:NSelectItem.Target>
-              </uix:NSelectItem>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_15">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Sequence_42">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into '6 October'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_36" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="6 October - WH (El Shames)" Version="V3">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18045617640836514&amp;_afrWindowMode=0&amp;_afrWindowId=yeg62upw0&amp;_adf.ctrl-state=se53r5z3c_1106&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="493, 315, 385, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'6 October'" FullSelectorArgument="&lt;webctrl aria-label='Location' tag='INPUT' type='text' aaname='Location' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Location' tag='INPUT' type='text' class='x1s6' aaname='Location' /&gt;" Guid="64e9e993-5db4-4d1f-8b39-11ec2237da85" ImageBase64="" InformativeScreenshot="69c29d6a167861f9e31df7e1dd35e44a.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
-                      </uix:NTypeInto.Target>
-                    </uix:NTypeInto>
-                  </Sequence>
-                </ui:CommentOut.Body>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:CommentOut>
-              <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'Notice Period'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_26" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="1" Version="V3">
+              </uix:NSelectItem>
+              <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'Notice Period'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_26" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="2" Version="V3">
                 <uix:NTypeInto.Target>
-                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18036893567481878&amp;_afrWindowMode=0&amp;_afrWindowId=xchx6dphi&amp;_adf.ctrl-state=se53r5z3c_545&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 305, 189, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'1'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Notice Period' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='text' tag='INPUT' class='x25' aaname='Notice Period' /&gt;" Guid="ae60856c-cbe1-4784-bd43-17a25b0834c8" ImageBase64="" InformativeScreenshot="3795943f2484861e413f068739b78da9.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='119tvs1izv' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18036893567481878&amp;_afrWindowMode=0&amp;_afrWindowId=xchx6dphi&amp;_adf.ctrl-state=se53r5z3c_545&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 375, 190, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tag='INPUT' aaname='Notice Period' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' aaname='Notice Period' type='text' class='x25' /&gt;" Guid="ae60856c-cbe1-4784-bd43-17a25b0834c8" InformativeScreenshot="2e712ea5339efbb7c645f3a3fbf4168b.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Hire an Employee - Oracle Fusion Cloud Applications' idx='1' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" WaitForReadyArgument="Complete" />
                 </uix:NTypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </uix:NTypeInto>
-              <uix:NSelectItem DisplayName="Select Item 'Select a value'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_40" Item="Months" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+              <uix:NSelectItem AlterIfDisabled="True" DisplayName="Select Item Notice Period unit" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NSelectItem_40" Item="Months" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NSelectItem.Items>
                   <scg:List x:TypeArguments="x:String" Capacity="6">
                     <x:String>Select a value</x:String>
@@ -1615,80 +1805,157 @@
                 <uix:NSelectItem.Target>
                   <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18540638514250194&amp;_afrWindowMode=0&amp;_afrWindowId=17p7urpnsr&amp;_adf.ctrl-state=srcpawzhx_618&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="8bf152a3-9a9f-4d13-8f82-54f670a19969" CvElementArea="689, 281, 214, 31" CvType="InputBox" DesignTimeRectangle="691, 375, 183, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Select a value'" FullSelectorArgument="&lt;webctrl aria-role='combobox' tag='INPUT' aaname='Notice Period Units' rowName='Notice Period' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='combobox' tag='INPUT' aaname='Notice Period Units' rowName='Notice Period' type='text' class='x2h' /&gt;" Guid="5a5e0135-83ef-4d89-bfd1-324d52b8dd0d" ImageBase64="" InformativeScreenshot="d5e8f2aec7698ad971ecb11d1af1b907.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Hire an Employee - Oracle Fusion Cloud Applications' idx='2' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
                 </uix:NSelectItem.Target>
-              </uix:NSelectItem>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_16">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Sequence_43">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'Select a value'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_37" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Months" Version="V3">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18045617640836514&amp;_afrWindowMode=0&amp;_afrWindowId=yeg62upw0&amp;_adf.ctrl-state=se53r5z3c_1106&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="691, 563, 183, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Select a value'" FullSelectorArgument="&lt;webctrl aria-role='combobox' tag='INPUT' aaname='Notice Period Units' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aria-role='combobox' type='text' tag='INPUT' class='x2h' aaname='Notice Period Units' /&gt;" Guid="ca14920a-7ad6-4d91-b55e-0a75b01324c8" ImageBase64="" InformativeScreenshot="a58ec1aecd4d881dca541f7c8be33fbb.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
-                      </uix:NTypeInto.Target>
-                    </uix:NTypeInto>
-                  </Sequence>
-                </ui:CommentOut.Body>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:CommentOut>
-              <uix:NSelectItem DisplayName="Select Item Insurance applicable" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_41" Item="Yes" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
-                <uix:NSelectItem.Items>
-                  <scg:List x:TypeArguments="x:String" Capacity="2">
-                    <x:String>No</x:String>
-                    <x:String>Yes</x:String>
-                  </scg:List>
-                </uix:NSelectItem.Items>
-                <uix:NSelectItem.Target>
-                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18540988774420272&amp;_afrWindowMode=0&amp;_afrWindowId=8ux8et8o1&amp;_adf.ctrl-state=srcpawzhx_775&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="47087e51-8e61-4a66-a79e-f5d1e610389f" CvElementArea="489, 275, 415, 31" CvType="InputBox" DesignTimeRectangle="492, 277, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Insurance Applicable' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Insurance Applicable' aria-role='combobox' tag='INPUT' type='text' class='x2h' /&gt;" Guid="b1ee2c43-31c9-40ca-aec9-74554091f977" ImageBase64="" InformativeScreenshot="10b5b799aa5bed5e240eb74808be78bf.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='188hhtfjd4' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
-                </uix:NSelectItem.Target>
               </uix:NSelectItem>
-              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'File Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_27" InteractionMode="DebuggerApi" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="A" Version="V3">
+              <If DisplayName="If  Type is casual trainee or consultant no insurance" sap:VirtualizedContainerService.HintSize="410,720" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_102">InsuranceNotApplicableList.Contains(Type)</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="300,140" sap2010:WorkflowViewState.IdRef="Sequence_48">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NSelectItem DisplayName="Select Item Insurance applicable" sap:VirtualizedContainerService.HintSize="258,52" sap2010:WorkflowViewState.IdRef="NSelectItem_41" Item="No" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                      <uix:NSelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="2">
+                          <x:String>No</x:String>
+                          <x:String>Yes</x:String>
+                        </scg:List>
+                      </uix:NSelectItem.Items>
+                      <uix:NSelectItem.Target>
+                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18540988774420272&amp;_afrWindowMode=0&amp;_afrWindowId=8ux8et8o1&amp;_adf.ctrl-state=srcpawzhx_775&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="47087e51-8e61-4a66-a79e-f5d1e610389f" CvElementArea="489, 275, 415, 31" CvType="InputBox" DesignTimeRectangle="492, 277, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Insurance Applicable' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Insurance Applicable' aria-role='combobox' tag='INPUT' type='text' class='x2h' /&gt;" Guid="b1ee2c43-31c9-40ca-aec9-74554091f977" ImageBase64="" InformativeScreenshot="10b5b799aa5bed5e240eb74808be78bf.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='188hhtfjd4' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                      </uix:NSelectItem.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NSelectItem>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="376,398" sap2010:WorkflowViewState.IdRef="Sequence_49">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NSelectItem DisplayName="Select Item Insurance applicable" sap:VirtualizedContainerService.HintSize="334,52" sap2010:WorkflowViewState.IdRef="NSelectItem_44" Item="Yes" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                      <uix:NSelectItem.Items>
+                        <scg:List x:TypeArguments="x:String" Capacity="2">
+                          <x:String>No</x:String>
+                          <x:String>Yes</x:String>
+                        </scg:List>
+                      </uix:NSelectItem.Items>
+                      <uix:NSelectItem.Target>
+                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18540988774420272&amp;_afrWindowMode=0&amp;_afrWindowId=8ux8et8o1&amp;_adf.ctrl-state=srcpawzhx_775&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="47087e51-8e61-4a66-a79e-f5d1e610389f" CvElementArea="489, 275, 415, 31" CvType="InputBox" DesignTimeRectangle="492, 277, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Insurance Applicable' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Insurance Applicable' aria-role='combobox' tag='INPUT' type='text' class='x2h' /&gt;" Guid="b1ee2c43-31c9-40ca-aec9-74554091f977" ImageBase64="" InformativeScreenshot="10b5b799aa5bed5e240eb74808be78bf.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='188hhtfjd4' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                      </uix:NSelectItem.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NSelectItem>
+                    <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into insurance number" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,218" sap2010:WorkflowViewState.IdRef="NTypeInto_43" InteractionMode="DebuggerApi" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                      <uix:NTypeInto.Target>
+                        <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18755325092190188&amp;_afrWindowMode=0&amp;_afrWindowId=102wpyvrw7&amp;_adf.ctrl-state=mbpucgne8_299&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="155c2aa8-7b9c-4b44-a59d-6f8c4e2f0149" CvElementArea="490, 549, 414, 31" CvType="InputBox" DesignTimeRectangle="492, 275, 411, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Insurance Number' tag='INPUT' type='text' class='x25' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Insurance Number' tag='INPUT' type='text' class='x25' /&gt;" Guid="407a24f5-f4ff-4a60-9022-37c938bb7a4f" InformativeScreenshot="9bd530b0c197eaf5ba23b0f4bfdb4a5c.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector" Version="V2" Visibility="Interactive" />
+                      </uix:NTypeInto.Target>
+                      <uix:NTypeInto.Text>
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_216">in_DicOfNewHireData["Insurance Number"]</CSharpValue>
+                        </InArgument>
+                      </uix:NTypeInto.Text>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uix:NTypeInto>
+                  </Sequence>
+                </If.Else>
+              </If>
+              <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'File Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_27" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NTypeInto.Target>
                   <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18036893567481878&amp;_afrWindowMode=0&amp;_afrWindowId=xchx6dphi&amp;_adf.ctrl-state=se53r5z3c_545&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 257, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='File Number' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='File Number' aria-role='combobox' name='_FOpt1:_FOr1:0:_FONSr2:0:MAnt2:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr*' tag='INPUT' type='text' class='xph' /&gt;" Guid="4b1d3d89-e611-43ea-b977-0b159b85acad" ImageBase64="" InformativeScreenshot="01fb7b08b85158ab488c67e5db5094c0.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='119tvs1izv' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
                 </uix:NTypeInto.Target>
-              </uix:NTypeInto>
-              <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'INPUT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_28" InteractionMode="DebuggerApi" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Exempt" Version="V3">
-                <uix:NTypeInto.Target>
-                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18036893567481878&amp;_afrWindowMode=0&amp;_afrWindowId=xchx6dphi&amp;_adf.ctrl-state=se53r5z3c_545&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 320, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Military Status' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Military Status' aria-role='combobox' name='_FOpt1:_FOr1:0:_FONSr2:0:MAnt2:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr*' tag='INPUT' type='text' class='xph' /&gt;" Guid="8b47045e-81cf-4c9a-9280-96aef2a77cd8" ImageBase64="" InformativeScreenshot="c2552908f8b0dbc5d17aa476f9c49ffe.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='119tvs1izv' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
-                </uix:NTypeInto.Target>
-              </uix:NTypeInto>
-              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_23" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
-                <uix:NClick.Target>
-                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17262316648910843&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=13yfgr7hao_5154&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1267&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="b851fe83-6ca8-472d-a604-d9353c1d4afd" CvElementArea="535, 310, 303, 42" CvTextArea="657, 324, 61, 13" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="557, 481, 300, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='Continue' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' aaname='Continue' type='' class='x3bd x7j p_AFTextOnly' check:text='Continue' /&gt;" Guid="c1d48a16-d8eb-483f-82c3-2f7a45569e0f" InformativeScreenshot="0022aff54f751f246a062847bfc96a26.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
-                </uix:NClick.Target>
+                <uix:NTypeInto.Text>
+                  <InArgument x:TypeArguments="x:String">
+                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_217">in_DicOfNewHireData["File Number"]</CSharpValue>
+                  </InArgument>
+                </uix:NTypeInto.Text>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
+              </uix:NTypeInto>
+              <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into Military status" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_28" InteractionMode="Simulate" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Text="Exempt" Version="V3">
+                <uix:NTypeInto.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18036893567481878&amp;_afrWindowMode=0&amp;_afrWindowId=xchx6dphi&amp;_adf.ctrl-state=se53r5z3c_545&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 320, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl aaname='Military Status' aria-role='combobox' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Military Status' aria-role='combobox' name='_FOpt1:_FOr1:0:_FONSr2:0:MAnt2:0:r1:1:heUpl:UPsp1:pcRgn:0:GPmtfr*' tag='INPUT' type='text' class='xph' /&gt;" Guid="8b47045e-81cf-4c9a-9280-96aef2a77cd8" ImageBase64="" InformativeScreenshot="c2552908f8b0dbc5d17aa476f9c49ffe.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='119tvs1izv' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                </uix:NTypeInto.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </uix:NTypeInto>
+              <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Continue'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NClick_23" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseWelcome?_afrLoop=17262316648910843&amp;_afrWindowMode=0&amp;_afrWindowId=null&amp;_adf.ctrl-state=13yfgr7hao_5154&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1267&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="b851fe83-6ca8-472d-a604-d9353c1d4afd" CvElementArea="535, 310, 303, 42" CvTextArea="657, 324, 61, 13" CvTextArgument="Continue" CvType="Button" DesignTimeRectangle="557, 481, 300, 40" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Continue'" FullSelectorArgument="&lt;webctrl tag='BUTTON' aaname='Continue' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' aaname='Continue' type='' class='x3bd x7j p_AFTextOnly' check:text='Continue' /&gt;" Guid="c1d48a16-d8eb-483f-82c3-2f7a45569e0f" InformativeScreenshot="0022aff54f751f246a062847bfc96a26.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='*Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                </uix:NClick.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </uix:NClick>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_20">
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="LogMessage_20">
                 <ui:LogMessage.Message>
                   <InArgument x:TypeArguments="x:Object">
                     <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_85">"Filling in citizinship info success ✔"</CSharpValue>
                   </InArgument>
                 </ui:LogMessage.Message>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </ui:LogMessage>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Fill in contract info" sap:VirtualizedContainerService.HintSize="1016,1004" sap2010:WorkflowViewState.IdRef="Sequence_28">
+            <Sequence sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Fill in contract info" sap:VirtualizedContainerService.HintSize="1016,589" sap2010:WorkflowViewState.IdRef="Sequence_28">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <uix:NCheckState DisplayName="Check App State 'Initial Start Date'" sap:VirtualizedContainerService.HintSize="954,473" sap2010:WorkflowViewState.IdRef="NCheckState_4" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+              <uix:NCheckState DisplayName="Check App State 'Initial Start Date'" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="NCheckState_4" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NCheckState.IfExists>
-                  <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,256" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                  <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_45">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1726,8 +1993,14 @@
                 <uix:NCheckState.Target>
                   <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18542269010819629&amp;_afrWindowMode=0&amp;_afrWindowId=13y218sfoy&amp;_adf.ctrl-state=srcpawzhx_1317&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1311&amp;_afrMFH=686&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="871456c1-1683-4b6c-b23a-d407415d134e" CvTextArea="491, 445, 104, 13" CvTextArgument="Initial Start Date" CvType="Text" DesignTimeRectangle="492, 442, 103, 19" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Initial Start Date'" FullSelectorArgument="&lt;webctrl tag='LABEL' class='af_panelLabelAndMessage_label-text' aaname='Initial Start Date' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='af_panelLabelAndMessage_label-text' aaname='Initial Start Date' check:innerText='Initial Start Date' /&gt;" Guid="2d90d82b-7d80-4dd1-a067-07f3ae227063" InformativeScreenshot="6bb4590d81a9cddac46b53414f313651.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='5emhghoh6' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" WaitForReadyArgument="Complete" />
                 </uix:NCheckState.Target>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
               </uix:NCheckState>
-              <uix:NSelectItem DisplayName="Select Item 'Fixed contract'" sap:VirtualizedContainerService.HintSize="954,157" sap2010:WorkflowViewState.IdRef="NSelectItem_31" Item="Fixed contract" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
+              <uix:NSelectItem DisplayName="Select Item 'Fixed contract'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NSelectItem_31" Item="Fixed contract" ScopeIdentifier="5ce20b6d-14c1-4015-8fbb-6db334cff5c7" Version="V3">
                 <uix:NSelectItem.Items>
                   <scg:List x:TypeArguments="x:String" Capacity="6">
                     <x:String>Select</x:String>
@@ -1748,7 +2021,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </uix:NSelectItem>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_22">
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_22">
                 <ui:LogMessage.Message>
                   <InArgument x:TypeArguments="x:Object">
                     <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91">"Filling in contract info success ✔"</CSharpValue>
@@ -1756,7 +2029,7 @@
                 </ui:LogMessage.Message>
               </ui:LogMessage>
             </Sequence>
-            <Sequence sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Submit the form" sap:VirtualizedContainerService.HintSize="512,123" sap2010:WorkflowViewState.IdRef="Sequence_29">
+            <Sequence sap2010:Annotation.AnnotationText="&#xA;" DisplayName="Submit the form" sap:VirtualizedContainerService.HintSize="1016,123" sap2010:WorkflowViewState.IdRef="Sequence_29">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1790,7 +2063,7 @@
                 </ui:LogMessage.Message>
               </ui:LogMessage>
             </Sequence>
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="512,52" sap2010:WorkflowViewState.IdRef="LogMessage_2">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1016,52" sap2010:WorkflowViewState.IdRef="LogMessage_2">
               <ui:LogMessage.Message>
                 <InArgument x:TypeArguments="x:Object">
                   <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">"hamada"</CSharpValue>
@@ -1822,5 +2095,12 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="546,141" sap2010:WorkflowViewState.IdRef="LogMessage_25">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_160">"Soka mimy"</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
   </Sequence>
 </Activity>
