@@ -1,0 +1,216 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "Config&TryCatch_1",
+        "QueueItem&TryCatch_1",
+        "EgyptianIDObject&TryCatch_1",
+        "OtherOnboardDataObject&TryCatch_1",
+        "WorkStubObject&TryCatch_1",
+        "CriminalRecordObject&TryCatch_1",
+        "DicOfNewHireData&TryCatch_1",
+        "MailMessage&TryCatch_1",
+        "DicOfInfo&Flowchart_1",
+        "ApprovalRequestObject&Flowchart_1",
+        "SE&Sequence_80",
+        "BE&Sequence_80",
+        "DicOfRequestInfo&Sequence_80",
+        "EgyptianIDCount&Sequence_24",
+        "EgyptianIDObjects&Sequence_24",
+        "dt_temp&Sequence_85",
+        "voidTemp&Sequence_85",
+        "FirstDataRow&Sequence_85",
+        "HomePageElement&Sequence_75",
+        "HTML&Sequence_79",
+        "SE&Sequence_79",
+        "variable1&Sequence_79",
+        "DictofMailInfo&Sequence_79"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "ReadConfigFromAssets"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Applications/Web/Oracle/EmployeeOnBoard.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "EnglishFirstName&Sequence_1",
+        "EnglishSecondName&Sequence_1",
+        "EnglishThirdName&Sequence_1",
+        "EnglishFourthName&Sequence_1",
+        "ArabicFirstName&Sequence_1",
+        "ArabicSecondName&Sequence_1",
+        "ArabicThirdName&Sequence_1",
+        "ArabicFourthName&Sequence_1",
+        "EnglishNationalID&Sequence_1",
+        "BirthDate&Sequence_1",
+        "Salary&Sequence_1",
+        "VariablePercent&Sequence_1",
+        "Type&Sequence_1",
+        "HiringDate&Sequence_1",
+        "Grade&Sequence_1",
+        "InsuranceNotApplicableList&Sequence_1",
+        "NationalIDIssueDate&Sequence_1",
+        "NationalIDExpiryDate&Sequence_1",
+        "Religion&Sequence_1",
+        "SocialStatus&Sequence_1",
+        "Gender&Sequence_1",
+        "ArabicNationalID&Sequence_18",
+        "Position&Sequence_18",
+        "Department&Sequence_18",
+        "DirectManager&Sequence_18",
+        "FixedPercent&Sequence_18",
+        "ArabicFathersName&Sequence_18",
+        "EnglishFullName&Sequence_18",
+        "arabicToEnglishDate&Sequence_18"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_DicOfNewHireData"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Mail/MailManipulations.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "SE&Sequence_63",
+        "SE&Sequence_68",
+        "BE&Sequence_68"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_SE",
+        "out_BE",
+        "out_DicOfRequestInfo",
+        "out_MailMessage"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Mail/Outlook/Read.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "ReadMailsUniqeSubject&Sequence_3",
+        "ReadMailsTop&Sequence_3",
+        "ReadMailsFolderName&Sequence_3",
+        "ReadMailsAccount&Sequence_3",
+        "MailSubjectFilterationQuery&Sequence_3",
+        "ListOfMails&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "out_SE",
+        "in_Config",
+        "out_MailMessage"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Mail/BodyPreparation/SuccessConfirmationMail.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "loadedImage&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "out_HTML",
+        "out_SE",
+        "in_DisplayName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Mail/BodyPreparation/SendExtractionValidationURL.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "loadedImage&Sequence_2"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_URL",
+        "out_HTML",
+        "out_SE",
+        "in_DisplayName"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Mail/Outlook/Send.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": [
+        "in_Config",
+        "in_DicOfInfo",
+        "out_SE"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Applications/Web/Oracle/SignIn.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "BusinessException&Sequence_18",
+        "screenShot&Sequence_33",
+        "screenShot&Sequence_23"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_URL",
+        "in_UserName",
+        "in_Password",
+        "in_ScreenShotsFolder",
+        "in_DatePrefix",
+        "out_HomePage"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ExceptionHandling/SEHandler.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "MailConfig&Sequence_20",
+        "SystemException&Sequence_20"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_SystemException",
+        "in_Config",
+        "in_QueueItem"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "ExceptionHandling/BEHandler.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "SystemException&Sequence_30",
+        "MailConfig&Sequence_30"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "in_BusinessException",
+        "in_QueueItem",
+        "in_Config"
+      ],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
