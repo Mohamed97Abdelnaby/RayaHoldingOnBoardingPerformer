@@ -1,0 +1,94 @@
+{
+  "name": "RayaOnBoardingPerformerMailVersion",
+  "projectId": "4918c85c-14db-4c86-b610-9e9f4d33774f",
+  "description": "Performer process for on boarding an employee in Raya holding companies",
+  "main": "Main.xaml",
+  "dependencies": {
+    "RPAHUB.BeautyMailRender.Activities": "[0.1.0.1005143228]",
+    "UiPath.DataService.Activities": "[24.7.1]",
+    "UiPath.Excel.Activities": "[2.22.4]",
+    "UiPath.IntegrationService.Activities": "[1.7.0]",
+    "UiPath.Mail.Activities": "[1.21.1]",
+    "UiPath.MicrosoftOffice365.Activities": "[2.6.25]",
+    "UiPath.System.Activities": "[24.10.5]",
+    "UiPath.System.Activities.Runtime": "[24.10.5]",
+    "UiPath.Testing.Activities": "[23.10.1]",
+    "UiPath.UIAutomation.Activities": "[24.10.3]",
+    "UiPath.UIAutomation.Activities.Runtime": "[24.10.3]"
+  },
+  "webServices": [],
+  "entitiesStores": [
+    {
+      "serviceDocument": ".entities/EntitiesStore.json",
+      "tenantName": "DefaultTenant",
+      "namespace": "RayaOnBoardingPerformer",
+      "uniqueReference": "dy01ih2XUwc63tkskh1DCwUT+a54oI8DtaJod3mlEnY="
+    }
+  ],
+  "schemaVersion": "4.0",
+  "studioVersion": "23.10.7.0",
+  "projectVersion": "1.0.3",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false,
+    "saveToCloud": false
+  },
+  "arguments": {
+    "input": [
+      {
+        "name": "ReadConfigFromAssets",
+        "type": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+        "required": false,
+        "hasDefault": true
+      }
+    ],
+    "output": []
+  },
+  "expressionLanguage": "CSharp",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "8edd65ff-b461-42cb-a994-274caa0d2b2b",
+      "input": [
+        {
+          "name": "ReadConfigFromAssets",
+          "type": "System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+          "required": false,
+          "hasDefault": true
+        }
+      ],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
+}

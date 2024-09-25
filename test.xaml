@@ -1,0 +1,286 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="test" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="786.6666666666666,2704" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models.FilterBuilder</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Models</x:String>
+      <x:String>UiPath.IntegrationService.Activities.Runtime.Activities</x:String>
+      <x:String>UiPath.Platform.Activities</x:String>
+      <x:String>UiPath.Platform.SyncObjects</x:String>
+      <x:String>UiPath.UIAutomationNext.Models</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DataService.Activities.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.IntegrationService.Activities.Runtime</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="test" sap:VirtualizedContainerService.HintSize="644,2639.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt1" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dt2" />
+      <Variable x:TypeArguments="x:String" Name="Religion" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Hire an Employee - Oracle Fusion Cloud Applications" sap:VirtualizedContainerService.HintSize="582,587.3333333333334" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="681be36b-0597-41dd-adea-8cd222df3c8b" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,336" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Position'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="354,248" sap2010:WorkflowViewState.IdRef="NTypeInto_7" ScopeIdentifier="681be36b-0597-41dd-adea-8cd222df3c8b" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=19763621127933252&amp;_afrWindowMode=0&amp;_afrWindowId=lm6yi5l2s&amp;_adf.ctrl-state=1d7sl7cbl3_743&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1272&amp;_afrMFH=643&amp;_afrMFDW=1280&amp;_afrMFDH=720&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=144&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" CVScreenId="15b7fcdd-59c4-481c-9aa5-1fa0beb82b81" CvElementArea="634, 424, 620, 47" CvType="InputBox" DesignTimeRectangle="637, 428, 578, 39" DesignTimeScaleFactor="1.5" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aria-label='Position' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Position' tag='INPUT' type='text' class='*' placeholder='Select a value' aaname='Position' /&gt;" Guid="8cd103a1-03c5-417b-861d-473200c9c00f" InformativeScreenshot="a9d82b25d8495bbc3fc4d69ddbc66307.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='9xj1r83uj' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="FuzzySelector" Version="V4" Visibility="Interactive" WaitForReadyArgument="Complete">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target CVScreenId="15b7fcdd-59c4-481c-9aa5-1fa0beb82b81" CvTextArea="642, 395, 81, 21" CvTextArgument="Position" CvType="Text" DesignTimeRectangle="647, 390, 77, 28" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Position' class='af_panelLabelAndMessage_label-text' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Position' class='af_panelLabelAndMessage_label-text' tag='LABEL' type='' check:innerText='Position' /&gt;" Guid="86f89128-6ae4-445b-bdf3-f5f2179645a4" SearchSteps="FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.Text>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"Senior Office Clerk - Office Clerks"+"[k(Enter)]"</CSharpValue>
+                </InArgument>
+              </uix:NTypeInto.Text>
+            </uix:NTypeInto>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 1942, 1102" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFFSURBVDhPnZJZTsNAEESt7OtHjpQD5CNHyklyFrawYwirQBAQAiEQCAQiIJamnu2xHFtAYKQnW9Nd1TM97e0VCjYNuxE7YjvCYxG0ZvPPbIUGnaxBq2XWbmdhP5G3mc+nDEjo9+3HRVx5H42G+RkD3w+TRiOzXi8L+yzlvcpgY8Kg242D6aPCJ1/2XRHlr00YUCEKpMUc911QNS6k/NXfDKiK+E281Ov2LJIGK86At40D0RWSVccSPiFOXWHJGTAYQVUXnKKJ5+WyLToDJiowoMKUz3hSKtkglwsNhjJI3jUw+maQTiU8FofFos07A0YyedeHWs3uqlW7EVeVil3ouGeCqkcSHgj6NucMGEk6/CjhvbiV8FrCS8Fdk1X3JaRnQ2lmnQEjyVStC4aD51kWdJlGDcSCkjkyVQHxjAgMosXPP/A6X4CZKcozoWSPAAAAAElFTkSuQmCC" InformativeScreenshot="3f36cd48374d439bf8f2f28e2fd056da.jpg" Selector="&lt;html app='msedge.exe' htmlwindowname='9xj1r83uj' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" Title="Hire an Employee - Oracle Fusion Cloud Applications" Url="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=19763621127933252&amp;_afrWindowMode=0&amp;_afrWindowId=lm6yi5l2s&amp;_adf.ctrl-state=1d7sl7cbl3_743&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=1272&amp;_afrMFH=643&amp;_afrMFDW=1280&amp;_afrMFDH=720&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=144&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=0" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:BuildDataTable DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="582,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column1&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Column2&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Column1&gt;text&lt;/Column1&gt;&#xA;    &lt;Column2&gt;1&lt;/Column2&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
+      <ui:BuildDataTable.DataTable>
+        <OutArgument x:TypeArguments="sd:DataTable">
+          <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">dt1</CSharpReference>
+        </OutArgument>
+      </ui:BuildDataTable.DataTable>
+    </ui:BuildDataTable>
+    <ui:BuildDataTable DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="582,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column3&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Column4&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Column3&gt;text&lt;/Column3&gt;&#xA;    &lt;Column4&gt;1&lt;/Column4&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;">
+      <ui:BuildDataTable.DataTable>
+        <OutArgument x:TypeArguments="sd:DataTable">
+          <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">dt2</CSharpReference>
+        </OutArgument>
+      </ui:BuildDataTable.DataTable>
+    </ui:BuildDataTable>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Hire an Employee - Oracle Fusion Cloud Applications" sap:VirtualizedContainerService.HintSize="582,1780" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="2a9f3efa-47b4-41cb-bf89-20ba3279dd38" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="548,1538" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="486,57.333333333333336" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'Active -'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="486,254.66666666666666" sap2010:WorkflowViewState.IdRef="NTypeInto_1" InteractionMode="Simulate" ScopeIdentifier="2a9f3efa-47b4-41cb-bf89-20ba3279dd38" Text="Active - Payroll Eligibl" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18045617640836514&amp;_afrWindowMode=0&amp;_afrWindowId=yeg62upw0&amp;_adf.ctrl-state=se53r5z3c_1106&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 363, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' aaname='Assignment Status' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' class='x2h' aaname='Assignment Status' /&gt;" Guid="3680243c-3ac1-4f35-91c7-16c51c88c3f8" ImageBase64="" InformativeScreenshot="934bfce64d084969fdd0816328908741.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'Permanent'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="486,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InteractionMode="Simulate" ScopeIdentifier="2a9f3efa-47b4-41cb-bf89-20ba3279dd38" Text="Casual" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18045617640836514&amp;_afrWindowMode=0&amp;_afrWindowId=yeg62upw0&amp;_adf.ctrl-state=se53r5z3c_1106&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 180, 383, 28" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aaname='Person Type' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Person Type' tag='INPUT' type='text' class='x2h' /&gt;" Guid="19838783-7bfc-42a7-bf06-58593bf940c6" ImageBase64="" InformativeScreenshot="7cb9cdac2d9ebefd14094c253381b4de.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NSelectItem DisplayName="Select Item 'Academy BUBusiness Unit'" sap:VirtualizedContainerService.HintSize="486,157" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Raya Holding BU" ScopeIdentifier="2a9f3efa-47b4-41cb-bf89-20ba3279dd38" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="5">
+                  <x:String>Business Unit Name</x:String>
+                  <x:String>Recent Business Units</x:String>
+                  <x:String>Raya Holding BU</x:String>
+                  <x:String>Academy BU</x:String>
+                  <x:String>Raya Integration BU</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18049006690381570&amp;_afrWindowMode=0&amp;_afrWindowId=q7nr4jwl7&amp;_adf.ctrl-state=se53r5z3c_1542&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 375, 411, 28" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl aria-role='combobox' tag='SPAN' aria-label='Business Unit' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-role='combobox' tag='SPAN' aria-label='Business Unit' type='' class='x1s5' aaname='' /&gt;" Guid="ade2006f-17d2-4b4b-954f-f62a5f277403" ImageBase64="" InformativeScreenshot="d76ba18d6d7e90447dc2c5bd599d3e30.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='17j4t0zj9n' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NSelectItem DisplayName="Select Item 'Senior Specialist'" sap:VirtualizedContainerService.HintSize="486,157" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Senior Specialist (Treasury) - Treasury2763Senior Specialist (Treasury)Treasury - 1946" ScopeIdentifier="2a9f3efa-47b4-41cb-bf89-20ba3279dd38" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="5">
+                  <x:String>NameCodeJob NameDepartment Name</x:String>
+                  <x:String>Recent Positions</x:String>
+                  <x:String>Senior Specialist (Treasury) - Treasury2763Senior Specialist (Treasury)Treasury - 1946</x:String>
+                  <x:String>Unknown - Raya Holding BUUnknown - Raya Holding BUUnknownUnknown</x:String>
+                  <x:String>Administrator (Administration) - Reception &amp; Meeting Rooms2689Administrator (Administration)Reception &amp; Meeting Rooms - 1981</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18050780796234978&amp;_afrWindowMode=0&amp;_afrWindowId=raotjib74&amp;_adf.ctrl-state=jv3tgzkbn_143&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="492, 367, 411, 28" DesignTimeScaleFactor="1" ElementType="DropDown" FullSelectorArgument="&lt;webctrl aria-label='Position' aria-role='combobox' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Position' aria-role='combobox' tag='SPAN' type='' class='x1s5' aaname='' /&gt;" Guid="98efa7c0-06cc-4316-a380-91e6e0f98a12" ImageBase64="" InformativeScreenshot="fb9c33f46b97828977f55d24d65fe254.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='jh9v5n6hu' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,52" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" AlterIfDisabled="True" ClickBeforeMode="None" DisplayName="Type Into 'Position'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_5" InteractionMode="DebuggerApi" ScopeIdentifier="2a9f3efa-47b4-41cb-bf89-20ba3279dd38" Text="Senior Specialist (Treasury) - Treasury[k(Enter)]" Version="V3">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18045617640836514&amp;_afrWindowMode=0&amp;_afrWindowId=yeg62upw0&amp;_adf.ctrl-state=se53r5z3c_1106&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="494, 370, 385, 24" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aria-label='Position' tag='INPUT' type='text' aaname='Position' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Position' tag='INPUT' type='text' class='x1s6' aaname='Position' /&gt;" Guid="17bfe372-ddcf-43d9-bda9-411103efdad4" ImageBase64="" InformativeScreenshot="e9d585c1955dd29a5ca2ccc40622a7dd.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486,408" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'BU'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="2a9f3efa-47b4-41cb-bf89-20ba3279dd38" Text="Raya Holding BU[k(Enter)]" Version="V3">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview?fnd=%252FWEB-INF%252Foracle%252Fapps%252Fhcm%252FhomePage%252FpublicUi%252FquickAction%252Fflow%252FHcmDataSecurityCheckFlow.xml%2523HcmDataSecurityCheckFlow%3BfndWarnChanges%253D%2523%257BProfile.values.HCM_SAVE_CHANGES_WARNING_ENABLED%2Beq%2B%2527Y%2527%257D%253BrootMenuGroupNodeId%253D%2523%257B%2527groupNode_workforce_management%2527%257D%253BquickActionItemNodeId%253D%2523%257B%2527my_org_hirean_employee_1%2527%257D%253Bheader%253D%2523%257BadfBundle%255B%2527oracle.apps.hcm.employment.resource.HcmEmploymentTopGenBundle%2527%255D%255B%2527Header.HireanEmployee%2527%255D%257D%253B%3B%3BHire%2Ban%2BEmployee%3Bfalse%3B256%3B%3B%3B&amp;pageParams=fndDetailsMode%3Dtrue%3BreturnFndUrl%3Dhttps%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;returnFndUrl=https%3A%2F%2Ffa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com%3A443%2FfscmUI%2Ffaces%2FFuseWelcome&amp;fndDetailsMode=true&amp;_afrLoop=18045617640836514&amp;_afrWindowMode=0&amp;_afrWindowId=yeg62upw0&amp;_adf.ctrl-state=se53r5z3c_1106&amp;_afrFS=16&amp;_afrMT=screen&amp;_afrMFW=626&amp;_afrMFH=677&amp;_afrMFDW=1366&amp;_afrMFDH=768&amp;_afrMFC=8&amp;_afrMFCI=0&amp;_afrMFM=0&amp;_afrMFR=96&amp;_afrMFG=0&amp;_afrMFS=0&amp;_afrMFO=1" DesignTimeRectangle="493, 249, 385, 26" DesignTimeScaleFactor="1" ElementType="InputBox" FullSelectorArgument="&lt;webctrl aria-label='Business Unit' tag='INPUT' type='text' aaname='Business Unit' /&gt;" FuzzySelectorArgument="&lt;webctrl aria-label='Business Unit' tag='INPUT' type='text' class='x1s6' aaname='Business Unit' /&gt;" Guid="09d166b6-ed09-451b-859e-f4094cef3c81" ImageBase64="" InformativeScreenshot="e4969a369259fcaada853723f47dd3fa.png" ScopeSelectorArgument="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="486,143" sap2010:WorkflowViewState.IdRef="LogMessage_1">
+              <ui:LogMessage.Message>
+                <InArgument x:TypeArguments="x:Object">
+                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">"a7a"</CSharpValue>
+                </InArgument>
+              </ui:LogMessage.Message>
+            </ui:LogMessage>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1382, 744" BrowserType="Edge" IconBase64="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" InformativeScreenshot="8c13d60a39a955d09f493e61fcac87f9.jpg" Selector="&lt;html app='msedge.exe' htmlwindowname='3h6634rg7' title='Hire an Employee - Oracle Fusion Cloud Applications' /&gt;" Title="Hire an Employee - Oracle Fusion Cloud Applications" Url="https://fa-ewrh-test-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/faces/FuseOverview*" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
